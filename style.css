@@ -1312,7 +1312,6 @@ footer{
 
 }
 
-
 /* ========================================= */
 /* NAVBAR — CELULAR */
 /* ========================================= */
@@ -1341,12 +1340,16 @@ footer{
 
         justify-content:space-between;
 
-        gap:6px;
+        gap:8px;
 
         box-sizing:border-box;
 
     }
 
+
+    /* ============================== */
+    /* LOGO */
+    /* ============================== */
 
     .logo{
 
@@ -1364,11 +1367,19 @@ footer{
     }
 
 
+    /* ============================== */
+    /* MENU */
+    /* ============================== */
+
     .navbar nav{
 
         flex:1;
 
         min-width:0;
+
+        display:flex;
+
+        justify-content:center;
 
     }
 
@@ -1383,7 +1394,18 @@ footer{
 
         justify-content:center;
 
-        gap:7px;
+        gap:10px;
+
+        white-space:nowrap;
+
+        width:100%;
+
+    }
+
+
+    .menu li{
+
+        flex-shrink:0;
 
         white-space:nowrap;
 
@@ -1396,8 +1418,14 @@ footer{
 
         font-weight:600;
 
+        white-space:nowrap;
+
     }
 
+
+    /* ============================== */
+    /* BOTÓN EMPRESA */
+    /* ============================== */
 
     .switch{
 
@@ -1412,6 +1440,7 @@ footer{
     }
 
 }
+
 
 /*================================*/
 /* BOTÓN DEL CARRITO */
