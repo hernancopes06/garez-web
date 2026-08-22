@@ -81,15 +81,15 @@ function actualizarCarrito(){
 
     if(carrito.length===0){
 
-    carritoItems.innerHTML="<p>Todavía no agregaste productos.</p>";
+        carritoItems.innerHTML="<p>Todavía no agregaste productos.</p>";
 
-    carritoTotal.textContent="$0";
+        carritoTotal.textContent="$0";
 
-    contadorCarrito.textContent="0";
+        contadorCarrito.textContent="0";
 
-    return;
+        return;
 
-}
+    }
 
     let total = 0;
 
@@ -108,6 +108,8 @@ function actualizarCarrito(){
             <br>
 
             Talle: ${producto.talle}
+
+            ${producto.color ? `<br>Color: ${producto.color}` : ""}
 
             <br>
 
@@ -135,17 +137,19 @@ function actualizarCarrito(){
 
     });
 
-    carritoTotal.textContent = "$" + formatoPrecio(total);
+    carritoTotal.textContent =
+        "$" + formatoPrecio(total);
 
-let cantidadTotal = 0;
+    let cantidadTotal = 0;
 
-carrito.forEach(producto=>{
+    carrito.forEach(producto=>{
 
-    cantidadTotal += producto.cantidad;
+        cantidadTotal += producto.cantidad;
 
-});
+    });
 
-contadorCarrito.textContent = cantidadTotal;
+    contadorCarrito.textContent =
+        cantidadTotal;
 
     document.querySelectorAll(".eliminar-producto").forEach(boton=>{
 
@@ -397,13 +401,16 @@ filtrarProductos
 document.addEventListener("click", (e) => {
 
     // ABRIR MODAL
-    const botonProducto = e.target.closest(".view-product");
+    const botonProducto =
+        e.target.closest(".view-product");
 
     if (botonProducto) {
 
-        const tarjeta = botonProducto.closest(".product-card");
+        const tarjeta =
+            botonProducto.closest(".product-card");
 
-        const modal = document.getElementById("product-modal");
+        const modal =
+            document.getElementById("product-modal");
 
         const modalName =
             document.getElementById("modal-name");
@@ -442,7 +449,9 @@ document.addEventListener("click", (e) => {
         // =========================================
 
         const imagen =
-            tarjeta.querySelector(".product-image img");
+            tarjeta.querySelector(
+                ".product-image img"
+            );
 
 
         // =========================================
@@ -451,7 +460,11 @@ document.addEventListener("click", (e) => {
 
         let imagenes = [];
 
-        if (nombre === "Buzo Canguro Frisado") {
+
+        // BUZO CANGURO FRISADO
+        if (
+            nombre === "Buzo Canguro Frisado"
+        ) {
 
             imagenes = [
                 "assets/img/buzo-canguro-frisado3.jpg",
@@ -460,7 +473,11 @@ document.addEventListener("click", (e) => {
 
         }
 
-        else if (nombre === "Remeras Oversize") {
+
+        // REMERAS OVERSIZE
+        else if (
+            nombre === "Remeras Oversize"
+        ) {
 
             imagenes = [
                 "assets/img/remeras-oversize3.jpg",
@@ -470,6 +487,73 @@ document.addEventListener("click", (e) => {
 
         }
 
+
+        // JEAN BAGGY TROPA
+        else if (
+            nombre === "Jean Baggy Tropa"
+        ) {
+
+            imagenes = [
+                "assets/img/jean-baggy-tropa2.jpg",
+                "assets/img/jean-baggy-tropa3.jpg"
+            ];
+
+        }
+
+
+        // CAMISETA UTOPÍA
+        else if (
+            nombre === "Camiseta Utopía"
+        ) {
+
+            imagenes = [
+                "assets/img/camiseta-utopia4.jpg",
+                "assets/img/camiseta-utopia3.jpg"
+            ];
+
+        }
+
+
+        // REMERA BOXY CALIFORNIA
+        else if (
+            nombre === "Remera Boxy California"
+        ) {
+
+            imagenes = [
+                "assets/img/remera-boxy-california3.jpg",
+                "assets/img/remera-boxy-california2.jpg"
+            ];
+
+        }
+
+
+        // BUZO CANGURO DARK MOON
+        else if (
+            nombre ===
+            "Buzo Canguro Dark Moon Strass"
+        ) {
+
+            imagenes = [
+                "assets/img/buzo-canguro-dark-moon-strass2.jpg"
+            ];
+
+        }
+
+
+        // BERMUDAS BAGGY RIO GLITCH
+        else if (
+            nombre ===
+            "Bermudas Baggy Rio Glitch"
+        ) {
+
+            imagenes = [
+                "assets/img/bermudas-baggy-rio-glitch2.jpg"
+            ];
+
+        }
+
+
+        // RESTO DE LOS PRODUCTOS
         else if (imagen) {
 
             imagenes = [
@@ -503,7 +587,7 @@ document.addEventListener("click", (e) => {
 
 
         // =========================================
-        // FLECHAS
+        // MOSTRAR / OCULTAR FLECHAS
         // =========================================
 
         if (imagenes.length > 1) {
@@ -527,6 +611,8 @@ document.addEventListener("click", (e) => {
 
         modalPrev.onclick = () => {
 
+            if (imagenes.length <= 1) return;
+
             imagenActual--;
 
             if (imagenActual < 0) {
@@ -546,6 +632,8 @@ document.addEventListener("click", (e) => {
         // =========================================
 
         modalNext.onclick = () => {
+
+            if (imagenes.length <= 1) return;
 
             imagenActual++;
 
@@ -639,10 +727,14 @@ document.addEventListener("click", (e) => {
     // CERRAR CON LA X
     // =========================================
 
-    if (e.target.closest("#close-modal")) {
+    if (
+        e.target.closest("#close-modal")
+    ) {
 
         const modal =
-            document.getElementById("product-modal");
+            document.getElementById(
+                "product-modal"
+            );
 
         modal.classList.remove("active");
 
@@ -655,9 +747,13 @@ document.addEventListener("click", (e) => {
     // CERRAR TOCANDO FUERA
     // =========================================
 
-    if (e.target.id === "product-modal") {
+    if (
+        e.target.id === "product-modal"
+    ) {
 
-        e.target.classList.remove("active");
+        e.target.classList.remove(
+            "active"
+        );
 
     }
 
@@ -1066,10 +1162,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================================
-    // ACTUALIZAR CHECKOUT
-    // =========================================
+// ACTUALIZAR CHECKOUT
+// =========================================
 
-   function actualizarCheckout(){
+function actualizarCheckout(){
 
     checkoutProducts.innerHTML = "";
 
@@ -1108,6 +1204,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span>
                     Talle: ${producto.talle}
                 </span>
+
+                ${
+                    producto.color
+                    ? `<span>Color: ${producto.color}</span>`
+                    : ""
+                }
 
                 <span>
                     Cantidad: ${producto.cantidad}
@@ -1597,86 +1699,107 @@ document.addEventListener("click", function(e) {
 
 
     // =====================================
-    // GUARDAR PEDIDO
-    // =====================================
+// GUARDAR PEDIDO
+// =====================================
 
-    const pedido = {
+const pedido = {
 
-        cliente: {
+    cliente: {
 
-            nombre,
-            apellido,
-            email,
-            telefono
+        nombre,
+        apellido,
+        email,
+        telefono
 
-        },
+    },
 
-        envio: {
+    envio: {
 
-            direccion,
-            localidad,
-            provincia,
-            codigoPostal,
+        direccion,
+        localidad,
+        provincia,
+        codigoPostal,
 
-            metodo:
-                envioSeleccionado.value,
+        metodo:
+            envioSeleccionado.value,
 
-            precio:
-                precioEnvio
+        precio:
+            precioEnvio
 
-        },
+    },
 
-        productos:
-            carrito.map(producto => ({
+    productos:
+        carrito.map(producto => ({
 
-                id: producto.id,
-                nombre: producto.nombre,
-                talle: producto.talle,
-                cantidad: producto.cantidad,
-                precio: producto.precio
+            id: producto.id,
+            nombre: producto.nombre,
+            talle: producto.talle,
+            color: producto.color || "",
+            cantidad: producto.cantidad,
+            precio: producto.precio
 
-            })),
+        })),
 
-        subtotal,
-        total
+    subtotal,
+    total
 
-    };
-
-
-    localStorage.setItem(
-        "garez-pedido",
-        JSON.stringify(pedido)
-    );
+};
 
 
-    // =====================================
-    // PREPARAR EMAIL
-    // =====================================
-
-    const productosPedido =
-        carrito.map(producto => {
-
-            return (
-                "- " +
-                producto.nombre +
-                " | Talle: " +
-                (producto.talle || "No corresponde") +
-                " | Cantidad: " +
-                producto.cantidad +
-                " | Precio: $" +
-                formatoPrecio(producto.precio)
-            );
-
-        }).join("\n");
+localStorage.setItem(
+    "garez-pedido",
+    JSON.stringify(pedido)
+);
 
 
-    const asunto =
-        "NUEVO PEDIDO GAREZ";
+// =====================================
+// PREPARAR EMAIL
+// =====================================
+
+const productosPedido =
+    carrito.map(producto => {
+
+        return (
+            "- " +
+            producto.nombre +
+            " | Talle: " +
+            (producto.talle || "No corresponde") +
+            (
+                producto.color
+                ? " | Color: " + producto.color
+                : ""
+            ) +
+            " | Cantidad: " +
+            producto.cantidad +
+            " | Precio: $" +
+            formatoPrecio(producto.precio) +
+            " | Importe: $" +
+            formatoPrecio(
+                producto.precio *
+                producto.cantidad
+            )
+        );
+
+    }).join("\n");
 
 
-    const cuerpo = `NUEVO PEDIDO GAREZ
+// =====================================
+// ASUNTO
+// =====================================
 
+const asunto =
+    "NUEVO PEDIDO GAREZ";
+
+
+// =====================================
+// CUERPO DEL EMAIL
+// =====================================
+
+const cuerpo = `NUEVO PEDIDO GAREZ
+
+================================
 DATOS DEL CLIENTE
+================================
 
 Nombre: ${nombre}
 Apellido: ${apellido}
@@ -1684,7 +1807,9 @@ Email: ${email}
 Teléfono: ${telefono}
 
 
+================================
 DATOS DE ENVÍO
+================================
 
 Dirección: ${direccion}
 Localidad: ${localidad}
@@ -1694,41 +1819,69 @@ Código postal: ${codigoPostal}
 Método de envío: ${envioSeleccionado.value}
 
 
+================================
 PRODUCTOS
+================================
 
 ${productosPedido}
 
 
+================================
 RESUMEN
+================================
 
 Subtotal: $${formatoPrecio(subtotal)}
 Envío: $${formatoPrecio(precioEnvio)}
+
 TOTAL: $${formatoPrecio(total)}
 
 
+================================
 ESTADO
+================================
 
 Pendiente de pago.
 Verificar el pago en Mercado Pago.
 `;
 
+// =====================================
+// ABRIR GMAIL Y MERCADO PAGO
+// =====================================
 
-    // =====================================
-    // ABRIR EMAIL
-    // =====================================
-
-    const enlaceEmail =
-        "mailto:tiendagarez@gmail.com" +
-        "?subject=" +
-        encodeURIComponent(asunto) +
-        "&body=" +
-        encodeURIComponent(cuerpo);
+const enlaceGmail =
+    "https://mail.google.com/mail/?view=cm" +
+    "&to=tiendagarez@gmail.com" +
+    "&su=" +
+    encodeURIComponent(asunto) +
+    "&body=" +
+    encodeURIComponent(cuerpo);
 
 
-    window.location.href =
-        enlaceEmail;
+// =====================================
+// ABRIR GMAIL
+// =====================================
+
+window.open(
+    enlaceGmail,
+    "_blank"
+);
+
+
+// =====================================
+// ABRIR MERCADO PAGO
+// =====================================
+
+setTimeout(() => {
+
+    window.open(
+        "https://link.mercadopago.com.ar/tiendagarez",
+        "_blank"
+    );
+
+}, 500);
 
 });
+    
 
 // =========================================
 // FLEX GAREZ — DESPLEGABLE
