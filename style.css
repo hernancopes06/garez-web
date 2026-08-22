@@ -1222,13 +1222,25 @@ text-align:center;
 
 .cart{
 
-width:90%;
+    width:90%;
 
-right:5%;
+    max-width:360px;
 
-left:5%;
+    right:-100%;
 
-bottom:20px;
+    left:auto;
+
+    top:90px;
+
+    bottom:auto;
+
+    max-height:calc(100vh - 110px);
+
+}
+
+.cart.open{
+
+    right:0;
 
 }
 
@@ -3197,4 +3209,138 @@ MODAL PRODUCTO
     border-radius: 15px;
 
     display: block;
+}
+
+/* =========================================
+   GAREZ — AJUSTE FINAL PARA CELULAR
+========================================= */
+
+@media (max-width:700px){
+
+    /* ==============================
+       NAVBAR
+    ============================== */
+
+    .navbar{
+
+        padding:12px 15px;
+
+        gap:8px;
+
+    }
+
+    .logo img{
+
+        width:85px;
+
+        height:auto;
+
+    }
+
+    .menu{
+
+        gap:8px 16px;
+
+    }
+
+    .menu a{
+
+        font-size:14px;
+
+    }
+
+    .switch{
+
+        padding:9px 18px;
+
+        font-size:14px;
+
+    }
+
+
+    /* ==============================
+       INICIO / HERO
+    ============================== */
+
+    .hero{
+
+        min-height:100vh;
+
+        padding:170px 20px 50px;
+
+    }
+
+    .hero-logo{
+
+        margin-bottom:5px;
+
+    }
+
+    .hero-logo img{
+
+        width:230px;
+
+        max-width:75vw;
+
+    }
+
+    .hero > p{
+
+        font-size:1rem;
+
+        margin:-5px 0 20px;
+
+    }
+
+    .buttons{
+
+        gap:10px;
+
+        flex-direction:column;
+
+        width:100%;
+
+    }
+
+    .buttons .btn{
+
+        width:100%;
+
+        max-width:280px;
+
+        padding:13px 20px;
+
+        font-size:14px;
+
+    }
+
+
+    /* ==============================
+       CARRITO
+    ============================== */
+
+    .cart{
+
+        width:90%;
+
+        max-width:360px;
+
+        right:-100%;
+
+        left:auto;
+
+        top:90px;
+
+        bottom:auto;
+
+        max-height:calc(100vh - 110px);
+
+    }
+
+    .cart.open{
+
+        right:0;
+
+    }
+
 }
