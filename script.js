@@ -1187,6 +1187,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const checkoutTotal =
         document.getElementById("checkout-total");
 
+             const continuePayment =
+    document.getElementById("continue-payment");
+
+const checkoutError =
+    document.getElementById("checkout-error");
 
     // =========================================
     // COMPROBAR ELEMENTOS
@@ -1469,6 +1474,214 @@ botonCalcularEnvio.addEventListener("click", () => {
     mostrarNotificacion(
         "✓ Envío calculado"
     );
+
+});
+
+// =========================================
+// MERCADO PAGO — CONTINUAR AL PAGO
+// =========================================
+
+continuePayment.addEventListener("click", async () => {
+
+    // =====================================
+    // COMPROBAR DATOS PERSONALES
+    // =====================================
+
+    const nombre =
+        document.getElementById("checkout-name").value.trim();
+
+    const apellido =
+        document.getElementById("checkout-lastname").value.trim();
+
+    const email =
+        document.getElementById("checkout-email").value.trim();
+
+    const telefono =
+        document.getElementById("checkout-phone").value.trim();
+
+
+    // =====================================
+    // COMPROBAR DATOS DE ENVÍO
+    // =====================================
+
+    const direccion =
+        document.getElementById("checkout-address").value.trim();
+
+    const localidad =
+        document.getElementById("checkout-city").value.trim();
+
+    const provincia =
+        document.getElementById("checkout-province").value;
+
+    const codigoPostal =
+        document.getElementById("checkout-postal").value.trim();
+
+
+    // =====================================
+    // COMPROBAR MÉTODO DE ENVÍO
+    // =====================================
+
+    const envioSeleccionado =
+        document.querySelector(
+            'input[name="shipping"]:checked'
+        );
+
+
+    if (
+        !nombre ||
+        !apellido ||
+        !email ||
+        !telefono ||
+        !direccion ||
+        !localidad ||
+        !provincia ||
+        !codigoPostal ||
+        !envioSeleccionado
+    ) {
+
+        checkoutError.textContent =
+            "Completá todos los campos y seleccioná un método de envío.";
+
+        checkoutError.style.display = "block";
+
+        return;
+
+    }
+
+
+    checkoutError.style.display = "none";
+
+
+    // =====================================
+    // OBTENER PRECIO DEL ENVÍO
+    // =====================================
+
+    const precioEnvio =
+        Number(envioSeleccionado.dataset.price);
+
+
+    // =====================================
+    // PREPARAR PRODUCTOS
+    // =====================================
+
+    const productos =
+        carrito.map(producto => ({
+
+            nombre: producto.nombre,
+
+            precio: Number(producto.precio),
+
+            cantidad: Number(producto.cantidad),
+
+            talle: producto.talle || "",
+
+            color: producto.color || ""
+
+        }));
+
+
+    // =====================================
+    // MOSTRAR ESTADO
+    // =====================================
+
+    continuePayment.disabled = true;
+
+    continuePayment.textContent =
+        "Conectando con Mercado Pago...";
+
+
+    try {
+
+        // =====================================
+        // ENVIAR PEDIDO AL BACKEND
+        // =====================================
+
+        const response =
+            await fetch("/api/create-preference", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    productos: productos,
+
+                    envio: precioEnvio,
+
+                    comprador: {
+
+                        nombre: nombre,
+
+                        apellido: apellido,
+
+                        email: email,
+
+                        telefono: telefono,
+
+                        direccion: direccion,
+
+                        localidad: localidad,
+
+                        provincia: provincia,
+
+                        codigoPostal: codigoPostal
+
+                    }
+
+                })
+
+            });
+
+
+        // =====================================
+        // LEER RESPUESTA
+        // =====================================
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok || !data.init_point) {
+
+            throw new Error(
+                data.error ||
+                "No se pudo crear el pago."
+            );
+
+        }
+
+
+        // =====================================
+        // IR A MERCADO PAGO
+        // =====================================
+
+        window.location.href =
+            data.init_point;
+
+
+    } catch (error) {
+
+        console.error(
+            "Error Mercado Pago:",
+            error
+        );
+
+        checkoutError.textContent =
+            "No se pudo iniciar el pago. Intentá nuevamente.";
+
+        checkoutError.style.display =
+            "block";
+
+        continuePayment.disabled =
+            false;
+
+        continuePayment.textContent =
+            "Continuar al pago";
+
+    }
 
 });
 
