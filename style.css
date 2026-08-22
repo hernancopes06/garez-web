@@ -1526,9 +1526,9 @@ footer{
 
    .products-grid .product-card{
 
-    flex:0 0 58% !important;
-    width:58% !important;
-    min-width:58% !important;
+    flex:0 0 52% !important;
+width:52% !important;
+min-width:52% !important;
 
     padding:16px !important;
 
@@ -1537,9 +1537,9 @@ footer{
 
 .products-grid .product-image{
 
-    height:220px !important;
+    height:180px !important;
 
-    margin-bottom:16px !important;
+    margin-bottom:14px !important;
 
     border-radius:12px !important;
 }
@@ -3508,6 +3508,56 @@ MODAL PRODUCTO
     display: block;
 }
 
+/* ========================================= */
+/* PRODUCTOS — AJUSTE CELULAR FINAL */
+/* ========================================= */
+
+@media (max-width:700px){
+
+    .products-grid{
+        display:flex !important;
+        flex-direction:row !important;
+        flex-wrap:nowrap !important;
+        overflow-x:auto !important;
+        overflow-y:hidden !important;
+
+        gap:12px !important;
+        padding:5px 12px 15px !important;
+
+        width:100% !important;
+        box-sizing:border-box !important;
+
+        scroll-snap-type:x mandatory;
+    }
+
+    .products-grid .product-card{
+        flex:0 0 52% !important;
+        width:52% !important;
+        min-width:52% !important;
+        max-width:52% !important;
+
+        padding:14px !important;
+
+        scroll-snap-align:start;
+    }
+
+    .products-grid .product-image{
+        height:180px !important;
+        margin-bottom:12px !important;
+    }
+
+    .products-grid .product-card h3{
+        font-size:1rem !important;
+        margin-bottom:6px !important;
+    }
+
+    .products-grid .price{
+        font-size:1rem !important;
+        margin-bottom:12px !important;
+    }
+
+}
+
 /* =========================================
    GAREZ — AJUSTE FINAL PARA CELULAR
 ========================================= */
@@ -3732,6 +3782,89 @@ MODAL PRODUCTO
 
     .cart.open{
         right:0;
+    }
+
+    /* ============================== */
+    /* PRODUCTOS — CELULAR COMPACTO */
+    /* ============================== */
+
+    .products-grid{
+        display:flex !important;
+        flex-direction:row !important;
+        flex-wrap:nowrap !important;
+
+        overflow-x:auto !important;
+        overflow-y:hidden !important;
+
+        gap:14px !important;
+
+        padding:5px 8px 15px !important;
+
+        width:100% !important;
+        box-sizing:border-box !important;
+
+        scroll-snap-type:x mandatory;
+    }
+
+    .products-grid .product-card{
+        flex:0 0 42% !important;
+        width:42% !important;
+        min-width:42% !important;
+
+        padding:12px !important;
+
+        border-radius:16px !important;
+
+        scroll-snap-align:start;
+    }
+
+    .products-grid .product-image{
+        height:150px !important;
+
+        margin-bottom:10px !important;
+
+        border-radius:10px !important;
+    }
+
+    .products-grid .product-card h3{
+        font-size:0.95rem !important;
+
+        line-height:1.2 !important;
+
+        margin-bottom:6px !important;
+    }
+
+    .products-grid .price{
+        font-size:0.95rem !important;
+
+        margin-bottom:10px !important;
+    }
+
+    .products-grid .product-card label{
+        font-size:0.75rem !important;
+
+        margin-top:8px !important;
+        margin-bottom:4px !important;
+    }
+
+    .products-grid .product-card select,
+    .products-grid .product-card input{
+        padding:8px !important;
+
+        font-size:0.8rem !important;
+
+        margin-bottom:6px !important;
+
+        border-radius:8px !important;
+    }
+
+    .products-grid .view-product,
+    .products-grid .add-cart{
+        padding:9px 8px !important;
+
+        font-size:0.75rem !important;
+
+        margin-top:8px !important;
     }
 
 }
