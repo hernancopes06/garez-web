@@ -1382,46 +1382,48 @@ footer{
 
     .navbar nav{
 
-        flex:1 1 auto;
+    position:absolute;
 
-        min-width:0;
+    left:78px;
 
-        overflow:hidden;
+    right:100px;
 
-        display:flex;
+    top:5px;
 
-        align-items:center;
+    height:50px;
 
-        justify-content:center;
+    display:flex;
 
-    }
+    align-items:center;
+
+    justify-content:center;
+
+}
 
 
     .menu{
 
-        display:flex;
+    display:flex;
 
-        flex-direction:row;
+    flex-direction:row;
 
-        flex-wrap:nowrap;
+    flex-wrap:nowrap;
 
-        align-items:center;
+    align-items:center;
 
-        justify-content:center;
+    justify-content:space-between;
 
-        gap:5px;
+    gap:0;
 
-        width:100%;
+    width:100%;
 
-        margin:0;
+    margin:0;
 
-        padding:0;
+    padding:0;
 
-        white-space:nowrap;
+    white-space:nowrap;
 
-        overflow:hidden;
-
-    }
+}
 
 
     .menu li{
