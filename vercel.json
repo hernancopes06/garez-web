@@ -1,7 +1,3 @@
 {
-  "functions": {
-    "api/create-preference.py": {
-      "runtime": "python3.13"
-    }
-  }
+  "version": 2
 }
