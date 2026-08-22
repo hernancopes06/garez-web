@@ -1170,13 +1170,13 @@ footer{
 
 .navbar{
 
-padding:20px;
+    padding:8px 12px;
 
-flex-direction:column;
+    flex-direction:row;
 
-height:auto;
+    height:58px;
 
-gap:15px;
+    gap:10px;
 
 }
 
