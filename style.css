@@ -3807,16 +3807,16 @@ MODAL PRODUCTO
     }
 
     .products-grid .product-card{
-        flex:0 0 42% !important;
-        width:42% !important;
-        min-width:42% !important;
+    flex:0 0 52% !important;
+    width:52% !important;
+    min-width:52% !important;
 
-        padding:12px !important;
+    padding:12px !important;
 
-        border-radius:16px !important;
+    border-radius:16px !important;
 
-        scroll-snap-align:start;
-    }
+    scroll-snap-align:start;
+}
 
    .products-grid .product-image{
     height:120px !important;
