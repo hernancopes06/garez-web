@@ -3420,175 +3420,190 @@ MODAL PRODUCTO
 @media (max-width:700px){
 
     /* ==============================
-       NAVBAR
-    ============================== */
+   NAVBAR — AJUSTE DEFINITIVO
+============================== */
 
-    .navbar{
+.navbar{
 
-        position:fixed;
+    position:fixed !important;
 
-        top:0;
+    top:0 !important;
+    left:0 !important;
 
-        left:0;
+    width:100% !important;
 
-        width:100%;
+    height:64px !important;
 
-        height:60px;
+    padding:0 6px !important;
 
-        padding:5px 7px;
+    display:flex !important;
 
-        display:flex;
+    flex-direction:row !important;
 
-        flex-direction:row;
+    align-items:center !important;
 
-        align-items:center;
+    justify-content:space-between !important;
 
-        justify-content:space-between;
+    box-sizing:border-box !important;
 
-        box-sizing:border-box;
-
-        overflow:hidden;
-
-    }
-
-
-    /* ==============================
-       LOGO
-    ============================== */
-
-    .logo{
-
-        flex:0 0 55px;
-
-        width:55px;
-
-        display:flex;
-
-        align-items:center;
-
-    }
-
-
-    .logo img{
-
-        width:55px;
-
-        height:auto;
-
-        display:block;
-
-    }
-
-
-    /* ==============================
-       MENÚ
-    ============================== */
-
-   .navbar nav{
-
-    position:absolute;
-
-    left:70px;
-
-    right:82px;
-
-    top:2px;
-
-    height:56px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
+    overflow:hidden !important;
 
 }
 
 
-   .menu{
+/* ==============================
+   LOGO
+============================== */
 
-    display:flex;
+.logo{
 
-    flex-direction:row;
+    position:relative !important;
 
-    flex-wrap:nowrap;
+    z-index:10 !important;
 
-    align-items:center;
+    flex:0 0 58px !important;
 
-    justify-content:center;
+    width:58px !important;
 
-    gap:7px;
+    display:flex !important;
 
-    width:100%;
+    align-items:center !important;
 
-    margin:0;
-
-    padding:0;
-
-    white-space:nowrap;
+    margin:0 !important;
 
 }
 
 
-    .menu li{
+.logo img{
 
-        display:block;
+    width:55px !important;
 
-        flex:0 0 auto;
+    height:auto !important;
 
-        margin:0;
+    display:block !important;
 
-        padding:0;
-
-        white-space:nowrap;
-
-        line-height:1;
-
-    }
+}
 
 
-    .menu a{
+/* ==============================
+   ZONA DEL MENÚ
+============================== */
 
-        display:block;
+.navbar nav{
 
-        font-size:9px;
+    position:absolute !important;
 
-        font-weight:600;
+    left:82px !important;
 
-        line-height:1;
+    right:108px !important;
 
-        white-space:nowrap;
+    top:7px !important;
 
-        text-align:center;
+    height:50px !important;
 
-    }
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+    overflow:hidden !important;
+
+}
 
 
-    /* ==============================
-       BOTÓN EMPRESA
-    ============================== */
+/* ==============================
+   ENLACES
+============================== */
 
-    .switch{
+.menu{
 
-        position:relative;
+    display:flex !important;
 
-        z-index:2;
+    flex-direction:row !important;
 
-        flex:0 0 auto;
+    flex-wrap:nowrap !important;
 
-        padding:6px 7px;
+    align-items:center !important;
 
-        margin:0;
+    justify-content:space-between !important;
 
-        font-size:8px;
+    gap:0 !important;
 
-        line-height:1;
+    width:100% !important;
 
-        white-space:nowrap;
+    margin:0 !important;
 
-        border-radius:20px;
+    padding:0 !important;
 
-    }
+    white-space:nowrap !important;
+
+    overflow:hidden !important;
+
+}
+
+
+.menu li{
+
+    display:block !important;
+
+    flex:0 0 auto !important;
+
+    width:auto !important;
+
+    margin:0 !important;
+
+    padding:0 !important;
+
+    white-space:nowrap !important;
+
+    line-height:1 !important;
+
+}
+
+
+.menu a{
+
+    display:block !important;
+
+    font-size:8px !important;
+
+    font-weight:600 !important;
+
+    line-height:1 !important;
+
+    white-space:nowrap !important;
+
+    text-align:center !important;
+
+}
+
+
+/* ==============================
+   BOTÓN EMPRESA
+============================== */
+
+.switch{
+
+    position:relative !important;
+
+    z-index:10 !important;
+
+    flex:0 0 auto !important;
+
+    padding:6px 7px !important;
+
+    margin:0 !important;
+
+    font-size:7px !important;
+
+    line-height:1 !important;
+
+    white-space:nowrap !important;
+
+    border-radius:20px !important;
+
+}
 
 
     /* ==============================
