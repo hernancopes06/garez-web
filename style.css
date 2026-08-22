@@ -1170,31 +1170,31 @@ footer{
 @media(max-width:900px){
 
     /* ============================== */
-    /* NAVBAR */
-    /* ============================== */
+/* NAVBAR */
+/* ============================== */
 
-    .navbar{
+.navbar{
 
-        padding:20px;
+    padding:20px;
 
-        flex-direction:column;
+    flex-direction:row;
 
-        height:auto;
+    height:80px;
 
-        gap:15px;
+    gap:15px;
 
-    }
+}
 
 
-    .menu{
+.menu{
 
-        flex-wrap:wrap;
+    flex-wrap:nowrap;
 
-        justify-content:center;
+    justify-content:center;
 
-        gap:18px;
+    gap:18px;
 
-    }
+}
 
 
     /* ============================== */
@@ -1319,6 +1319,10 @@ footer{
 
 @media(max-width:700px){
 
+        /* ============================== */
+    /* NAVBAR */
+    /* ============================== */
+
     .navbar{
 
         position:fixed;
@@ -1329,9 +1333,9 @@ footer{
 
         width:100%;
 
-        height:60px;
+        height:64px;
 
-        padding:5px 7px;
+        padding:0 8px;
 
         display:flex;
 
@@ -1341,11 +1345,9 @@ footer{
 
         justify-content:space-between;
 
-        gap:4px;
+        gap:0;
 
         box-sizing:border-box;
-
-        overflow:hidden;
 
     }
 
@@ -1361,6 +1363,10 @@ footer{
         display:flex;
 
         align-items:center;
+
+        width:60px;
+
+        margin-right:8px;
 
     }
 
@@ -1382,48 +1388,42 @@ footer{
 
     .navbar nav{
 
-    position:absolute;
+        flex:1;
 
-    left:78px;
+        min-width:0;
 
-    right:100px;
+        display:flex;
 
-    top:5px;
+        align-items:center;
 
-    height:50px;
+        justify-content:center;
 
-    display:flex;
+        overflow:hidden;
 
-    align-items:center;
-
-    justify-content:center;
-
-}
+    }
 
 
     .menu{
 
-    display:flex;
+        display:flex;
 
-    flex-direction:row;
+        flex-direction:row;
 
-    flex-wrap:nowrap;
+        flex-wrap:nowrap;
 
-    align-items:center;
+        align-items:center;
 
-    justify-content:space-between;
+        justify-content:space-between;
 
-    gap:0;
+        width:100%;
 
-    width:100%;
+        gap:0;
 
-    margin:0;
+        margin:0;
 
-    padding:0;
+        padding:0;
 
-    white-space:nowrap;
-
-}
+    }
 
 
     .menu li{
@@ -1462,11 +1462,11 @@ footer{
 
         flex:0 0 auto;
 
-        padding:5px 7px;
+        margin-left:8px;
 
-        margin:0;
+        padding:6px 7px;
 
-        font-size:8px;
+        font-size:7px;
 
         line-height:1;
 
@@ -1476,7 +1476,7 @@ footer{
 
     }
 
-}
+    }
 
 /*================================*/
 /* BOTÓN DEL CARRITO */
@@ -3420,190 +3420,150 @@ MODAL PRODUCTO
 @media (max-width:700px){
 
     /* ==============================
-   NAVBAR — AJUSTE DEFINITIVO
-============================== */
+       NAVBAR
+    ============================== */
 
-.navbar{
+    .navbar{
+        position:fixed !important;
 
-    position:fixed !important;
+        top:0 !important;
+        left:0 !important;
 
-    top:0 !important;
-    left:0 !important;
+        width:100% !important;
+        height:64px !important;
 
-    width:100% !important;
+        padding:0 8px !important;
 
-    height:64px !important;
+        display:flex !important;
+        flex-direction:row !important;
+        align-items:center !important;
+        justify-content:space-between !important;
 
-    padding:0 6px !important;
+        box-sizing:border-box !important;
+        overflow:hidden !important;
 
-    display:flex !important;
+        gap:8px !important;
+    }
 
-    flex-direction:row !important;
 
-    align-items:center !important;
+    /* ==============================
+       LOGO
+    ============================== */
 
-    justify-content:space-between !important;
+    .navbar .logo{
+        flex:0 0 58px !important;
 
-    box-sizing:border-box !important;
+        width:58px !important;
+        min-width:58px !important;
 
-    overflow:hidden !important;
+        display:flex !important;
+        align-items:center !important;
 
-}
+        margin:0 !important;
+    }
 
 
-/* ==============================
-   LOGO
-============================== */
+    .navbar .logo img{
+        width:55px !important;
+        height:auto !important;
 
-.logo{
+        display:block !important;
+    }
 
-    position:relative !important;
 
-    z-index:10 !important;
+    /* ==============================
+       MENÚ
+    ============================== */
 
-    flex:0 0 58px !important;
+    .navbar nav{
+        position:static !important;
 
-    width:58px !important;
+        flex:1 1 auto !important;
+        min-width:0 !important;
 
-    display:flex !important;
+        height:64px !important;
 
-    align-items:center !important;
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
 
-    margin:0 !important;
+        overflow:hidden !important;
+    }
 
-}
 
+    .navbar .menu{
+        width:100% !important;
 
-.logo img{
+        display:flex !important;
+        flex-direction:row !important;
+        flex-wrap:nowrap !important;
 
-    width:55px !important;
+        align-items:center !important;
+        justify-content:space-evenly !important;
 
-    height:auto !important;
+        gap:0 !important;
 
-    display:block !important;
+        margin:0 !important;
+        padding:0 !important;
 
-}
+        list-style:none !important;
 
+        overflow:hidden !important;
+        white-space:nowrap !important;
+    }
 
-/* ==============================
-   ZONA DEL MENÚ
-============================== */
 
-.navbar nav{
+    .navbar .menu li{
+        flex:0 1 auto !important;
 
-    position:absolute !important;
+        width:auto !important;
 
-    left:82px !important;
+        margin:0 !important;
+        padding:0 !important;
 
-    right:108px !important;
+        white-space:nowrap !important;
+    }
 
-    top:7px !important;
 
-    height:50px !important;
+    .navbar .menu a{
+        display:block !important;
 
-    display:flex !important;
+        padding:4px 3px !important;
 
-    align-items:center !important;
+        font-size:9px !important;
+        line-height:1.1 !important;
 
-    justify-content:center !important;
+        font-weight:600 !important;
 
-    overflow:hidden !important;
+        white-space:nowrap !important;
+        text-align:center !important;
+    }
 
-}
 
+    /* ==============================
+       BOTÓN ¿SOS UNA EMPRESA?
+    ============================== */
 
-/* ==============================
-   ENLACES
-============================== */
+    .navbar .switch{
+        flex:0 0 auto !important;
 
-.menu{
+        max-width:78px !important;
 
-    display:flex !important;
+        padding:6px 7px !important;
 
-    flex-direction:row !important;
+        margin:0 !important;
 
-    flex-wrap:nowrap !important;
+        font-size:7px !important;
+        line-height:1.1 !important;
 
-    align-items:center !important;
+        text-align:center !important;
 
-    justify-content:space-between !important;
+        white-space:nowrap !important;
 
-    gap:0 !important;
+        border-radius:20px !important;
 
-    width:100% !important;
-
-    margin:0 !important;
-
-    padding:0 !important;
-
-    white-space:nowrap !important;
-
-    overflow:hidden !important;
-
-}
-
-
-.menu li{
-
-    display:block !important;
-
-    flex:0 0 auto !important;
-
-    width:auto !important;
-
-    margin:0 !important;
-
-    padding:0 !important;
-
-    white-space:nowrap !important;
-
-    line-height:1 !important;
-
-}
-
-
-.menu a{
-
-    display:block !important;
-
-    font-size:8px !important;
-
-    font-weight:600 !important;
-
-    line-height:1 !important;
-
-    white-space:nowrap !important;
-
-    text-align:center !important;
-
-}
-
-
-/* ==============================
-   BOTÓN EMPRESA
-============================== */
-
-.switch{
-
-    position:relative !important;
-
-    z-index:10 !important;
-
-    flex:0 0 auto !important;
-
-    padding:6px 7px !important;
-
-    margin:0 !important;
-
-    font-size:7px !important;
-
-    line-height:1 !important;
-
-    white-space:nowrap !important;
-
-    border-radius:20px !important;
-
-}
+        box-sizing:border-box !important;
+    }
 
 
     /* ==============================
@@ -3611,52 +3571,39 @@ MODAL PRODUCTO
     ============================== */
 
     .hero{
-
         min-height:100vh;
 
         padding:170px 20px 50px;
-
     }
 
 
     .hero-logo{
-
         margin-bottom:5px;
-
     }
 
 
     .hero-logo img{
-
         width:230px;
-
         max-width:75vw;
-
     }
 
 
     .hero > p{
-
         font-size:1rem;
-
         margin:-5px 0 20px;
-
     }
 
 
     .buttons{
-
         gap:10px;
 
         flex-direction:column;
 
         width:100%;
-
     }
 
 
     .buttons .btn{
-
         width:100%;
 
         max-width:280px;
@@ -3664,7 +3611,6 @@ MODAL PRODUCTO
         padding:13px 20px;
 
         font-size:14px;
-
     }
 
 
@@ -3673,7 +3619,6 @@ MODAL PRODUCTO
     ============================== */
 
     .cart{
-
         width:90%;
 
         max-width:360px;
@@ -3687,14 +3632,11 @@ MODAL PRODUCTO
         bottom:auto;
 
         max-height:calc(100vh - 110px);
-
     }
 
 
     .cart.open{
-
         right:0;
-
     }
 
 }
