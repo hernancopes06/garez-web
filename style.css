@@ -3223,39 +3223,41 @@ MODAL PRODUCTO
 
     .navbar{
 
-        padding:12px 15px;
+    padding:8px 12px;
 
-        gap:8px;
+    gap:5px;
 
-    }
+}
 
-    .logo img{
+.logo img{
 
-        width:85px;
+    width:75px;
 
-        height:auto;
+    height:auto;
 
-    }
+}
 
-    .menu{
+.menu{
 
-        gap:8px 16px;
+    gap:5px 12px;
 
-    }
+    justify-content:center;
 
-    .menu a{
+}
 
-        font-size:14px;
+.menu a{
 
-    }
+    font-size:13px;
 
-    .switch{
+}
 
-        padding:9px 18px;
+.switch{
 
-        font-size:14px;
+    padding:7px 14px;
 
-    }
+    font-size:12px;
+
+}
 
 
     /* ==============================

@@ -817,61 +817,159 @@ document.addEventListener("click", (e) => {
     if (!botonAgregar) return;
 
 
+    // Verificamos que haya un producto abierto
     if (!tarjetaModalActual) {
 
-        mostrarNotificacion("No se pudo identificar el producto");
+        mostrarNotificacion(
+            "No se pudo identificar el producto"
+        );
 
         return;
 
     }
 
 
+    // =========================================
+    // TALLE
+    // =========================================
+
     const talleSeleccionado =
-        document.querySelector(".sizes span.selected");
+        document.querySelector(
+            ".sizes span.selected"
+        );
 
 
     if (!talleSeleccionado) {
 
-        mostrarNotificacion("Seleccioná un talle");
+        mostrarNotificacion(
+            "Seleccioná un talle"
+        );
 
         return;
 
     }
 
 
-    // Buscamos el selector de talle original
-    const selectorTalle =
-        tarjetaModalActual.querySelector(".product-size");
+    const talle =
+        talleSeleccionado.textContent.trim();
 
 
-    // Ponemos el talle seleccionado
-    if (selectorTalle) {
+    // =========================================
+    // DATOS DEL PRODUCTO
+    // =========================================
 
-        selectorTalle.value =
-            talleSeleccionado.textContent.trim();
+    const nombre =
+        tarjetaModalActual.dataset.name;
+
+
+    const precio =
+        parseInt(
+            tarjetaModalActual.dataset.price
+        );
+
+
+    const id =
+        tarjetaModalActual.dataset.id;
+
+
+    // =========================================
+    // COLOR
+    // =========================================
+
+    const selectorColor =
+        tarjetaModalActual.querySelector(
+            ".product-color"
+        );
+
+
+    const color =
+        selectorColor
+            ? selectorColor.value
+            : "";
+
+
+    // =========================================
+    // CANTIDAD
+    // =========================================
+
+    const selectorCantidad =
+        tarjetaModalActual.querySelector(
+            ".product-quantity"
+        );
+
+
+    const cantidad =
+        selectorCantidad
+            ? parseInt(selectorCantidad.value)
+            : 1;
+
+
+    // =========================================
+    // COMPROBAR SI YA EXISTE
+    // =========================================
+
+    const existente =
+        carrito.find(producto =>
+
+            producto.nombre === nombre &&
+            producto.talle === talle &&
+            producto.color === color
+
+        );
+
+
+    if (existente) {
+
+        existente.cantidad += cantidad;
+
+    } else {
+
+        carrito.push({
+
+            id: id,
+
+            nombre: nombre,
+
+            precio: precio,
+
+            talle: talle,
+
+            color: color,
+
+            cantidad: cantidad
+
+        });
 
     }
 
 
-    // Usamos el MISMO botón del carrito que ya funciona
-    const botonCarrito =
-        tarjetaModalActual.querySelector(".add-cart");
+    // =========================================
+    // ACTUALIZAR CARRITO
+    // =========================================
+
+    actualizarCarrito();
 
 
-    if (botonCarrito) {
-
-        botonCarrito.click();
-
-    }
+    mostrarNotificacion(
+        "✓ Producto agregado"
+    );
 
 
-    // Cerramos el modal
+    // =========================================
+    // CERRAR MODAL
+    // =========================================
+
     const modal =
-        document.getElementById("product-modal");
+        document.getElementById(
+            "product-modal"
+        );
+
 
     if (modal) {
 
-        modal.classList.remove("active");
+        modal.classList.remove(
+            "active"
+        );
 
     }
 
