@@ -1,3 +1,7 @@
 {
-  "version": 2
+  "functions": {
+    "api/create-preference.py": {
+      "runtime": "@vercel/python"
+    }
+  }
 }
