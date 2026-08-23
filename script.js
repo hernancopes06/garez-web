@@ -236,30 +236,6 @@ botonesAgregar.forEach(boton=>{
 });
 
 // ==========================
-// ELIMINAR PRODUCTOS
-// ==========================
-
-carritoItems.addEventListener("click",(e)=>{
-
-    if(
-
-        e.target.classList.contains("eliminar-producto")
-
-    ){
-
-        const indice=e.target.dataset.index;
-
-        carrito.splice(indice,1);
-
-        actualizarCarrito();
-
-        mostrarNotificacion("Producto eliminado");
-
-    }
-
-});
-
-// ==========================
 // LOCAL STORAGE
 // ==========================
 
