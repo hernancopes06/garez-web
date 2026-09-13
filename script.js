@@ -81,11 +81,16 @@ function actualizarCarrito(){
 
     if(carrito.length===0){
 
-        carritoItems.innerHTML="<p>Todavía no agregaste productos.</p>";
+        carritoItems.innerHTML =
+            '<p class="cart-empty">Todavía no agregaste productos.</p>';
 
-        carritoTotal.textContent="$0";
+        carritoTotal.textContent = "$0";
 
-        contadorCarrito.textContent="0";
+        contadorCarrito.textContent = "0";
+
+        actualizarEstadoCarrito();
+
+        guardarCarrito();
 
         return;
 
@@ -101,35 +106,88 @@ function actualizarCarrito(){
 
         item.className = "cart-item";
 
+
+        // Los accesorios no tienen talle: sin este chequeo
+        // aparecia "Talle:" vacio.
+
+        const detalles = [];
+
+        if (producto.talle) {
+
+            // Hay un producto cuyo talle ya se llama "Talle único":
+            // sin esto salia "Talle Talle único".
+            detalles.push(
+                /talle/i.test(producto.talle)
+                    ? producto.talle
+                    : "Talle " + producto.talle
+            );
+
+        }
+
+        if (producto.color) {
+            detalles.push(producto.color);
+        }
+
+
+        const miniatura =
+            producto.imagen
+                ? `<img src="${producto.imagen}" alt="" loading="lazy">`
+                : "";
+
+
         item.innerHTML = `
 
-            <strong>${producto.nombre}</strong>
+            <div class="cart-item-img">
+                ${miniatura}
+            </div>
 
-            <br>
+            <div class="cart-item-info">
 
-            Talle: ${producto.talle}
+                <strong>${producto.nombre}</strong>
 
-            ${producto.color ? `<br>Color: ${producto.color}` : ""}
+                ${
+                    detalles.length
+                    ? `<span class="cart-item-meta">${detalles.join(" · ")}</span>`
+                    : ""
+                }
 
-            <br>
+                <div class="cart-qty" role="group" aria-label="Cantidad">
 
-            Cantidad: ${producto.cantidad}
+                    <button
+                        type="button"
+                        class="cart-qty-btn"
+                        data-accion="menos"
+                        data-index="${index}"
+                        aria-label="Quitar uno">−</button>
 
-            <br>
+                    <span class="cart-qty-valor">${producto.cantidad}</span>
 
-            $${formatoPrecio(producto.precio)}
+                    <button
+                        type="button"
+                        class="cart-qty-btn"
+                        data-accion="mas"
+                        data-index="${index}"
+                        aria-label="Agregar uno">+</button>
 
-            <br><br>
+                </div>
 
-            <button class="eliminar-producto"
+            </div>
 
-            data-index="${index}">
+            <div class="cart-item-right">
 
-            Eliminar
+                <strong>$${formatoPrecio(producto.precio * producto.cantidad)}</strong>
 
-            </button>
+                <button
+                    type="button"
+                    class="eliminar-producto"
+                    data-index="${index}"
+                    aria-label="Eliminar ${producto.nombre}">
 
-            <hr>
+                    Eliminar
+
+                </button>
+
+            </div>
 
         `;
 
@@ -151,11 +209,50 @@ function actualizarCarrito(){
     contadorCarrito.textContent =
         cantidadTotal;
 
-    document.querySelectorAll(".eliminar-producto").forEach(boton=>{
+
+    // ---- eliminar ----
+
+    carritoItems.querySelectorAll(".eliminar-producto").forEach(boton=>{
 
         boton.addEventListener("click",()=>{
 
-            carrito.splice(boton.dataset.index,1);
+            carrito.splice(Number(boton.dataset.index),1);
+
+            actualizarCarrito();
+
+            mostrarNotificacion("Producto eliminado");
+
+        });
+
+    });
+
+
+    // ---- cambiar cantidad ----
+
+    carritoItems.querySelectorAll(".cart-qty-btn").forEach(boton=>{
+
+        boton.addEventListener("click",()=>{
+
+            const i = Number(boton.dataset.index);
+
+            const producto = carrito[i];
+
+            if (!producto) return;
+
+            if (boton.dataset.accion === "mas") {
+
+                producto.cantidad += 1;
+
+            } else {
+
+                producto.cantidad -= 1;
+
+                // Al llegar a cero se saca del carrito
+                if (producto.cantidad <= 0) {
+                    carrito.splice(i,1);
+                }
+
+            }
 
             actualizarCarrito();
 
@@ -163,7 +260,101 @@ function actualizarCarrito(){
 
     });
 
+    actualizarEstadoCarrito();
+
+    guardarCarrito();
+
 }
+
+
+// ==========================
+// ESTADO DEL CARRITO
+// ==========================
+// Deshabilita "Finalizar compra" y esconde el globito
+// cuando no hay nada.
+
+function actualizarEstadoCarrito(){
+
+    const vacio = carrito.length === 0;
+
+    if (botonFinalizar) {
+
+        botonFinalizar.disabled = vacio;
+
+        botonFinalizar.classList.toggle("is-disabled", vacio);
+
+    }
+
+    if (contadorCarrito) {
+
+        contadorCarrito.classList.toggle("is-empty", vacio);
+
+    }
+
+}
+
+
+// ==========================
+// AVISO AL AGREGAR
+// ==========================
+// Feedback inmediato: el boton confirma, el carrito late
+// y el globito salta.
+
+function festejarAgregado(boton){
+
+    if (boton) {
+
+        const textoOriginal = boton.dataset.textoOriginal || boton.textContent;
+
+        boton.dataset.textoOriginal = textoOriginal;
+
+        boton.classList.add("agregado");
+
+        boton.textContent = "✓ Agregado";
+
+        clearTimeout(boton._volver);
+
+        boton._volver = setTimeout(()=>{
+
+            boton.classList.remove("agregado");
+
+            boton.textContent = textoOriginal;
+
+        }, 1400);
+
+    }
+
+    if (botonCarrito) {
+
+        botonCarrito.classList.remove("late");
+
+        // reiniciar la animacion
+        void botonCarrito.offsetWidth;
+
+        botonCarrito.classList.add("late");
+
+        setTimeout(()=>{
+            botonCarrito.classList.remove("late");
+        }, 600);
+
+    }
+
+    if (contadorCarrito) {
+
+        contadorCarrito.classList.remove("salta");
+
+        void contadorCarrito.offsetWidth;
+
+        contadorCarrito.classList.add("salta");
+
+        setTimeout(()=>{
+            contadorCarrito.classList.remove("salta");
+        }, 500);
+
+    }
+
+}
+
 
 // ==========================
 // AGREGAR PRODUCTOS
@@ -179,7 +370,11 @@ botonesAgregar.forEach(boton=>{
 
         const precio=parseInt(tarjeta.dataset.price);
 
-        const talle=tarjeta.querySelector(".product-size").value;
+        // Las bolsas y el headpiece no tienen talle: sin esto tiraba
+        // TypeError al agregarlos al carrito.
+        const selectorTalle=tarjeta.querySelector(".product-size");
+
+        const talle=selectorTalle ? selectorTalle.value : "";
 
         const selectorColor=tarjeta.querySelector(".product-color");
 
@@ -209,6 +404,9 @@ botonesAgregar.forEach(boton=>{
 
         }else{
 
+            const foto =
+                tarjeta.querySelector(".product-image img");
+
             carrito.push({
 
                 id:tarjeta.dataset.id,
@@ -221,7 +419,10 @@ botonesAgregar.forEach(boton=>{
 
                 color:color,
 
-                cantidad:cantidad
+                cantidad:cantidad,
+
+                // para la miniatura del carrito
+                imagen: foto ? foto.getAttribute("src") : ""
 
             });
 
@@ -229,7 +430,9 @@ botonesAgregar.forEach(boton=>{
 
         actualizarCarrito();
 
-        mostrarNotificacion("✓ Producto agregado");
+        festejarAgregado(boton);
+
+        mostrarNotificacion("Sumaste " + nombre + " al carrito");
 
     });
 
@@ -270,13 +473,75 @@ function cargarCarrito(){
 }
 
 
+// ==========================
+// RECUPERAR EL CARRITO GUARDADO
+// ==========================
+// cargarCarrito() estaba definida pero nunca se llamaba:
+// el carrito se perdia al recargar la pagina.
+
+cargarCarrito();
+
+actualizarCarrito();
+
+
 //=========================
 // ABRIR / CERRAR CARRITO
 //=========================
 
+const cerrarCarritoBtn =
+    document.getElementById("close-cart");
+
+const carritoOverlay =
+    document.getElementById("cart-overlay");
+
+
+function abrirCarrito(){
+
+    carritoPanel.classList.add("open");
+
+    if (carritoOverlay) {
+        carritoOverlay.classList.add("active");
+    }
+
+}
+
+
+function cerrarCarrito(){
+
+    carritoPanel.classList.remove("open");
+
+    if (carritoOverlay) {
+        carritoOverlay.classList.remove("active");
+    }
+
+}
+
+
 botonCarrito.addEventListener("click",()=>{
 
-    carritoPanel.classList.toggle("open");
+    if (carritoPanel.classList.contains("open")) {
+        cerrarCarrito();
+    } else {
+        abrirCarrito();
+    }
+
+});
+
+
+if (cerrarCarritoBtn) {
+    cerrarCarritoBtn.addEventListener("click", cerrarCarrito);
+}
+
+if (carritoOverlay) {
+    carritoOverlay.addEventListener("click", cerrarCarrito);
+}
+
+
+document.addEventListener("keydown",(e)=>{
+
+    if (e.key === "Escape" && carritoPanel.classList.contains("open")) {
+        cerrarCarrito();
+    }
 
 });
 
@@ -323,6 +588,46 @@ function filtrarProductos(){
         }
 
     });
+
+
+    // Avisar cuando la busqueda no encuentra nada, en vez de
+    // dejar la tienda vacia sin explicacion.
+
+    const grilla = document.querySelector(".products-grid");
+
+    if (grilla) {
+
+        const visibles = [...tarjetas].filter(
+            t => t.style.display !== "none"
+        ).length;
+
+        let aviso = grilla.querySelector(".sin-resultados");
+
+        if (visibles === 0) {
+
+            if (!aviso) {
+
+                aviso = document.createElement("p");
+                aviso.className = "sin-resultados";
+
+                grilla.appendChild(aviso);
+
+            }
+
+            aviso.textContent =
+                "No encontramos productos con esa búsqueda.";
+
+            aviso.style.display = "block";
+
+        }
+
+        else if (aviso) {
+
+            aviso.style.display = "none";
+
+        }
+
+    }
 
 }
 
@@ -662,6 +967,55 @@ document.addEventListener("click", (e) => {
 
 
         // =========================================
+        // TALLES SEGUN EL PRODUCTO
+        // =========================================
+        // Las bolsas y el headpiece no tienen talle: mostrar
+        // S/M/L/XL ahi obligaba a elegir uno inventado.
+
+        const tieneTalle =
+            !!tarjeta.querySelector(".product-size");
+
+        const bloqueTalles =
+            modal.querySelector(".modal-sizes");
+
+        const botonGuia =
+            document.getElementById("size-guide-btn");
+
+        if (bloqueTalles) {
+            bloqueTalles.hidden = !tieneTalle;
+        }
+
+        if (botonGuia) {
+            botonGuia.hidden = !tieneTalle;
+        }
+
+        // Arranca sin talle elegido y refleja los talles reales
+        // de la ficha, no una lista fija.
+
+        const contenedorTalles =
+            modal.querySelector(".sizes");
+
+        if (contenedorTalles && tieneTalle) {
+
+            const opciones =
+                [...tarjeta.querySelectorAll(".product-size option")]
+                    .map(o => o.textContent.trim());
+
+            contenedorTalles.innerHTML = "";
+
+            opciones.forEach(t => {
+
+                const span = document.createElement("span");
+                span.textContent = t;
+
+                contenedorTalles.appendChild(span);
+
+            });
+
+        }
+
+
+        // =========================================
         // ABRIR MODAL
         // =========================================
 
@@ -782,13 +1136,17 @@ document.addEventListener("click", (e) => {
     // TALLE
     // =========================================
 
+    const tieneTalle =
+        !!tarjetaModalActual.querySelector(".product-size");
+
+
     const talleSeleccionado =
         document.querySelector(
             ".sizes span.selected"
         );
 
 
-    if (!talleSeleccionado) {
+    if (tieneTalle && !talleSeleccionado) {
 
         mostrarNotificacion(
             "Seleccioná un talle"
@@ -800,7 +1158,9 @@ document.addEventListener("click", (e) => {
 
 
     const talle =
-        talleSeleccionado.textContent.trim();
+        talleSeleccionado
+            ? talleSeleccionado.textContent.trim()
+            : "";
 
 
     // =========================================
@@ -873,6 +1233,11 @@ document.addEventListener("click", (e) => {
 
     } else {
 
+        const foto =
+            tarjetaModalActual.querySelector(
+                ".product-image img"
+            );
+
         carrito.push({
 
             id: id,
@@ -885,7 +1250,10 @@ document.addEventListener("click", (e) => {
 
             color: color,
 
-            cantidad: cantidad
+            cantidad: cantidad,
+
+            // para la miniatura del carrito
+            imagen: foto ? foto.getAttribute("src") : ""
 
         });
 
@@ -898,9 +1266,11 @@ document.addEventListener("click", (e) => {
 
     actualizarCarrito();
 
+    festejarAgregado(botonAgregar);
+
 
     mostrarNotificacion(
-        "✓ Producto agregado"
+        "Sumaste " + nombre + " al carrito"
     );
 
 
@@ -1180,6 +1550,19 @@ const checkoutError =
 
         }
 
+        // Arrancar siempre sin envio elegido: si no, quedaba
+        // el precio de una compra anterior.
+
+        checkoutModal.dataset.shippingPrice = 0;
+
+        checkoutModal
+            .querySelectorAll('input[name="shipping"]')
+            .forEach(op => { op.checked = false; });
+
+        checkoutModal
+            .querySelectorAll(".flex-option")
+            .forEach(op => op.classList.remove("seleccionada"));
+
         actualizarCheckout();
 
         checkoutModal.classList.add("active");
@@ -1211,6 +1594,137 @@ const checkoutError =
         }
 
     });
+
+
+    // =========================================
+    // CALCULAR ENVÍO
+    // =========================================
+    // El boton y los radios existian en el HTML pero no habia
+    // nada escuchandolos, asi que dataset.shippingPrice nunca
+    // se seteaba y el resumen quedaba siempre en "A calcular".
+
+    const botonCalcular =
+        document.getElementById("calculate-shipping");
+
+    const opcionesEnvio =
+        checkoutModal.querySelectorAll(
+            'input[name="shipping"]'
+        );
+
+
+    function opcionEnvioElegida(){
+
+        return checkoutModal.querySelector(
+            'input[name="shipping"]:checked'
+        );
+
+    }
+
+
+    function aplicarEnvio(){
+
+        const elegida = opcionEnvioElegida();
+
+        checkoutModal.dataset.shippingPrice =
+            elegida
+                ? (elegida.dataset.price || 0)
+                : 0;
+
+        // Resaltar la opcion elegida con una clase. Depender de
+        // :has() dejaba el recuadro sin marcar.
+
+        checkoutModal
+            .querySelectorAll(".flex-option")
+            .forEach(op => op.classList.remove("seleccionada"));
+
+        if (elegida) {
+
+            const contenedor =
+                elegida.closest(".flex-option");
+
+            if (contenedor) {
+                contenedor.classList.add("seleccionada");
+            }
+
+        }
+
+        actualizarCheckout();
+
+        return elegida;
+
+    }
+
+
+    // Se actualiza al toque de elegir, sin esperar al boton
+
+    opcionesEnvio.forEach((opcion) => {
+
+        opcion.addEventListener("change", () => {
+
+            aplicarEnvio();
+
+            if (checkoutError) {
+                checkoutError.style.display = "none";
+            }
+
+        });
+
+    });
+
+
+    // El boton confirma y avisa si no eligieron nada
+
+    if (botonCalcular) {
+
+        botonCalcular.addEventListener("click", () => {
+
+            const elegida = aplicarEnvio();
+
+            if (!elegida) {
+
+                mostrarNotificacion(
+                    "Elegí un método de envío"
+                );
+
+                if (checkoutError) {
+
+                    checkoutError.textContent =
+                        "Seleccioná un método de envío para calcular el costo.";
+
+                    checkoutError.style.display = "block";
+
+                }
+
+                return;
+
+            }
+
+            if (checkoutError) {
+                checkoutError.style.display = "none";
+            }
+
+            mostrarNotificacion(
+                "Envío calculado"
+            );
+
+            // Llevar la vista al resumen, que es donde
+            // aparece el numero recien calculado
+
+            const resumen =
+                document.getElementById("checkout-products");
+
+            if (resumen) {
+
+                resumen.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest"
+                });
+
+            }
+
+        });
+
+    }
 
 
     // =========================================
@@ -1253,9 +1767,11 @@ function actualizarCheckout(){
                     ${producto.nombre}
                 </strong>
 
-                <span>
-                    Talle: ${producto.talle}
-                </span>
+                ${
+                    producto.talle
+                    ? `<span>Talle: ${producto.talle}</span>`
+                    : ""
+                }
 
                 ${
                     producto.color
@@ -1497,8 +2013,26 @@ continuePayment.addEventListener("click", async () => {
         // LEER RESPUESTA
         // =====================================
 
-        const data =
-            await response.json();
+        const texto =
+            await response.text();
+
+
+        let data = {};
+
+        try {
+
+            data = JSON.parse(texto);
+
+        } catch (e) {
+
+            throw new Error(
+                "El servidor respondió " +
+                response.status +
+                " sin JSON. Probá el sitio publicado en Vercel, " +
+                "no el Live Server."
+            );
+
+        }
 
 
         if (!response.ok || !data.init_point) {
@@ -1527,6 +2061,7 @@ continuePayment.addEventListener("click", async () => {
         );
 
         checkoutError.textContent =
+            error.message ||
             "No se pudo iniciar el pago. Intentá nuevamente.";
 
         checkoutError.style.display =
@@ -1545,6 +2080,166 @@ continuePayment.addEventListener("click", async () => {
 });
 
 // =========================================
+// ABRIR EL DETALLE TOCANDO LA FOTO
+// =========================================
+// En celular la ficha no muestra el boton "Ver producto",
+// asi que la foto es la que entra al detalle. Reusa el
+// boton de la ficha para no repetir la logica del modal.
+
+document.addEventListener("click", (e) => {
+
+    const foto = e.target.closest(".product-image");
+
+    if (!foto) return;
+
+    const tarjeta = foto.closest(".product-card");
+
+    if (!tarjeta) return;
+
+    const boton = tarjeta.querySelector(".view-product");
+
+    if (boton) boton.click();
+
+});
+
+
+// Mismo acceso desde el teclado
+
+document.querySelectorAll(".product-image").forEach(foto => {
+
+    foto.setAttribute("role", "button");
+    foto.setAttribute("tabindex", "0");
+
+    const nombre =
+        foto.closest(".product-card")?.dataset.name || "el producto";
+
+    foto.setAttribute("aria-label", "Ver detalle de " + nombre);
+
+    foto.addEventListener("keydown", (e) => {
+
+        if (e.key === "Enter" || e.key === " ") {
+
+            e.preventDefault();
+
+            foto.click();
+
+        }
+
+    });
+
+});
+
+
+// =========================================
+// MENU MOVIL — HAMBURGUESA
+// =========================================
+
+const menuToggle =
+    document.getElementById("menu-toggle");
+
+const mainNav =
+    document.getElementById("main-nav");
+
+const navOverlay =
+    document.getElementById("nav-overlay");
+
+
+if (menuToggle && mainNav && navOverlay) {
+
+    // =====================================
+    // ABRIR / CERRAR
+    // =====================================
+
+    const abrirMenu = () => {
+
+        mainNav.classList.add("open");
+        navOverlay.classList.add("active");
+        menuToggle.classList.add("open");
+
+        document.body.classList.add("nav-open");
+
+        menuToggle.setAttribute("aria-expanded", "true");
+        menuToggle.setAttribute("aria-label", "Cerrar menu");
+
+    };
+
+
+    const cerrarMenu = () => {
+
+        mainNav.classList.remove("open");
+        navOverlay.classList.remove("active");
+        menuToggle.classList.remove("open");
+
+        document.body.classList.remove("nav-open");
+
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menu");
+
+    };
+
+
+    // =====================================
+    // BOTON
+    // =====================================
+
+    menuToggle.addEventListener("click", () => {
+
+        if (mainNav.classList.contains("open")) {
+            cerrarMenu();
+        } else {
+            abrirMenu();
+        }
+
+    });
+
+
+    // =====================================
+    // CERRAR AL TOCAR EL FONDO
+    // =====================================
+
+    navOverlay.addEventListener("click", cerrarMenu);
+
+
+    // =====================================
+    // CERRAR AL ELEGIR UN APARTADO
+    // =====================================
+
+    mainNav.querySelectorAll("a").forEach(enlace => {
+
+        enlace.addEventListener("click", cerrarMenu);
+
+    });
+
+
+    // =====================================
+    // CERRAR CON ESCAPE
+    // =====================================
+
+    document.addEventListener("keydown", (e) => {
+
+        if (e.key === "Escape" && mainNav.classList.contains("open")) {
+            cerrarMenu();
+        }
+
+    });
+
+
+    // =====================================
+    // CERRAR SI SE VUELVE A ESCRITORIO
+    // =====================================
+
+    window.addEventListener("resize", () => {
+
+        if (window.innerWidth > 900 && mainNav.classList.contains("open")) {
+            cerrarMenu();
+        }
+
+    });
+
+}
+
+
+// =========================================
 // FLEX GAREZ — DESPLEGABLE
 // =========================================
 
@@ -1555,11 +2250,15 @@ const flexOptions =
     document.getElementById("flex-options");
 
 
-toggleFlex.addEventListener("click", () => {
+if (toggleFlex && flexOptions) {
 
-    flexOptions.classList.toggle("active");
+    toggleFlex.addEventListener("click", () => {
 
-});
+        flexOptions.classList.toggle("active");
+
+    });
+
+}
 
 // =========================================
 // SELECCIÓN DE COLOR — GAREZ

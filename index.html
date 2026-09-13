@@ -9,6 +9,16 @@
 
     <title>GAREZ | Streetwear & Producción Textil</title>
 
+    <meta name="description" content="GAREZ - Streetwear argentino y produccion textil para empresas. Indumentaria de coleccion, uniformes corporativos y merchandising a medida.">
+
+    <link rel="icon" type="image/png" href="assets/img/garez-logo-trim.png">
+    <link rel="apple-touch-icon" href="assets/img/garez-logo-trim.png">
+
+    <meta property="og:title" content="GAREZ | Streetwear & Produccion Textil">
+    <meta property="og:description" content="Streetwear argentino y produccion textil para empresas.">
+    <meta property="og:image" content="assets/img/garez-logo-trim.png">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,12 +40,26 @@
     <a href="#inicio" class="logo">
 
         <img
-            src="assets/img/garez-logo.png"
+            src="assets/img/garez-logo-trim.png"
             alt="GAREZ">
 
     </a>
 
-    <nav>
+    <button
+        id="menu-toggle"
+        class="menu-toggle"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="main-nav"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+    <nav id="main-nav">
 
         <ul class="menu">
 
@@ -51,10 +75,20 @@
 
                 <a
                     href="https://instagram.com/garez.at"
-                    target="_blank"
+                    target="_blank" rel="noopener noreferrer"
                 >
 
                     Instagram
+
+                </a>
+
+            </li>
+
+            <li class="menu-switch-item">
+
+                <a href="#corporativo" class="switch">
+
+                    ¿Sos una empresa?
 
                 </a>
 
@@ -64,13 +98,15 @@
 
     </nav>
 
-    <a href="#corporativo" class="switch">
+    <a href="#corporativo" class="switch switch-desktop">
 
         ¿Sos una empresa?
 
     </a>
 
 </header>
+
+<div id="nav-overlay" class="nav-overlay"></div>
 
 
 
@@ -89,7 +125,7 @@
 <h1 class="hero-logo">
 
     <img
-        src="assets/img/garez-logo.png"
+        src="assets/img/garez-logo-trim.png"
         alt="GAREZ">
 
 </h1>
@@ -278,6 +314,8 @@ VER SERVICIO →
 
 </div>
 
+</section>
+
 
 
 
@@ -464,7 +502,7 @@ exclusivas.
 
         <div class="client-logo">
 
-            <img
+            <img loading="lazy" decoding="async"
                 src="assets/img/club-leloir.png"
                 alt="Club Leloir">
 
@@ -484,7 +522,7 @@ exclusivas.
 
         <div class="client-logo">
 
-            <img
+            <img loading="lazy" decoding="async"
                 src="assets/img/rj-project.png"
                 alt="RJ Project">
 
@@ -504,7 +542,7 @@ exclusivas.
 
         <div class="client-logo">
 
-            <img
+            <img loading="lazy" decoding="async"
                 src="assets/img/slm.png"
                 alt="Salvando la Merienda">
 
@@ -677,7 +715,7 @@ y personalización.
 
 href="https://wa.me/5491162538655"
 
-target="_blank"
+target="_blank" rel="noopener noreferrer"
 
 class="btn whatsapp"
 
@@ -699,7 +737,7 @@ PEDIR PRESUPUESTO
 
 <section id="servicio-staff" class="service-page">
 
-<img
+<img loading="lazy" decoding="async"
     src="assets/img/servicio1.jpg"
     alt="Staff y Eventos"
     class="service-image">
@@ -743,7 +781,7 @@ stands y empresas.
 <a
     href="https://wa.me/5491162538655?text=Hola%20GAREZ!%20Quiero%20consultar%20sobre%20Staff%20%26%20Eventos."
     class="btn"
-    target="_blank">
+    target="_blank" rel="noopener noreferrer">
 
     Consultar
 
@@ -757,7 +795,7 @@ stands y empresas.
 
 <section id="servicio-merch" class="service-page">
 
-<img
+<img loading="lazy" decoding="async"
     src="assets/img/servicio2.jpg"
     alt="Merchandising Premium"
     class="service-image">
@@ -800,7 +838,7 @@ y lanzamientos.
 <a
     href="https://wa.me/5491162538655?text=Hola%20GAREZ!%20Quiero%20consultar%20sobre%20Merchandising%20Premium."
     class="btn"
-    target="_blank">
+    target="_blank" rel="noopener noreferrer">
 
     Consultar
 
@@ -814,7 +852,7 @@ y lanzamientos.
 
 <section id="servicio-produccion" class="service-page">
 
-<img
+<img loading="lazy" decoding="async"
     src="assets/img/servicio3.jpg"
     alt="Producción Textil"
     class="service-image">
@@ -853,7 +891,7 @@ de prendas personalizadas.
 <a
     href="https://wa.me/5491162538655?text=Hola%20GAREZ!%20Quiero%20consultar%20sobre%20Producci%C3%B3n%20Textil."
     class="btn"
-    target="_blank">
+    target="_blank" rel="noopener noreferrer">
 
     Consultar
 
@@ -947,7 +985,7 @@ data-category="Remeras">
 
 <div class="product-image">
 
-    <img
+    <img loading="lazy" decoding="async"
         src="assets/img/remera-boxy-california1.jpg"
         alt="Remera Boxy California">
 
@@ -965,13 +1003,11 @@ data-category="Remeras">
 
 </p>
 
-<label>
+<div class="product-options">
 
-    Talle
-
-</label>
-
-<select class="product-size">
+    <div class="product-option">
+        <label>Talle</label>
+        <select class="product-size">
 
     <option>S</option>
     <option>M</option>
@@ -979,14 +1015,11 @@ data-category="Remeras">
     <option>XL</option>
 
 </select>
+    </div>
 
-<label>
-
-    Cantidad
-
-</label>
-
-<input
+    <div class="product-option">
+        <label>Cantidad</label>
+        <input
 
 class="product-quantity"
 
@@ -995,6 +1028,9 @@ type="number"
 value="1"
 
 min="1">
+    </div>
+
+</div>
 
 <button
     class="view-product"
@@ -1051,7 +1087,7 @@ data-category="Hoodies">
 
 <div class="product-image">
 
-    <img
+    <img loading="lazy" decoding="async"
         src="assets/img/buzo-canguro-frisado1.jpg"
         alt="Buzo Canguro Frisado">
 
@@ -1069,13 +1105,11 @@ data-category="Hoodies">
 
 </p>
 
-<label>
+<div class="product-options">
 
-    Talle
-
-</label>
-
-<select class="product-size">
+    <div class="product-option">
+        <label>Talle</label>
+        <select class="product-size">
 
     <option>S</option>
     <option>M</option>
@@ -1083,32 +1117,29 @@ data-category="Hoodies">
     <option>XL</option>
 
 </select>
+    </div>
 
-<label>
-
-    Color
-
-</label>
-
-<select class="product-color">
+    <div class="product-option">
+        <label>Color</label>
+        <select class="product-color">
 
     <option value="Rosa">Rosa</option>
     <option value="Marrón">Marrón</option>
     <option value="Gris">Gris</option>
 
 </select>
+    </div>
 
-<label>
-
-    Cantidad
-
-</label>
-
-<input
+    <div class="product-option">
+        <label>Cantidad</label>
+        <input
     class="product-quantity"
     type="number"
     value="1"
     min="1">
+    </div>
+
+</div>
 
 <button
     class="view-product"
@@ -1163,7 +1194,7 @@ data-category="Hoodies">
 
 <div class="product-image">
 
-    <img
+    <img loading="lazy" decoding="async"
         src="assets/img/buzo-canguro-dark-moon-strass1.jpg"
         alt="Buzo Canguro Dark Moon Strass">
 
@@ -1181,13 +1212,11 @@ data-category="Hoodies">
 
 </p>
 
-<label>
+<div class="product-options">
 
-    Talle
-
-</label>
-
-<select class="product-size">
+    <div class="product-option">
+        <label>Talle</label>
+        <select class="product-size">
 
     <option>S</option>
     <option>M</option>
@@ -1195,18 +1224,18 @@ data-category="Hoodies">
     <option>XL</option>
 
 </select>
+    </div>
 
-<label>
-
-    Cantidad
-
-</label>
-
-<input
+    <div class="product-option">
+        <label>Cantidad</label>
+        <input
     class="product-quantity"
     type="number"
     value="1"
     min="1">
+    </div>
+
+</div>
 
 <button
     class="view-product"
@@ -1261,7 +1290,7 @@ data-category="Pantalones">
 
 <div class="product-image">
 
-    <img
+    <img loading="lazy" decoding="async"
         src="assets/img/jean-baggy-tropa1.jpg"
         alt="Jean Baggy Tropa">
 
@@ -1278,30 +1307,28 @@ data-category="Pantalones">
 
 </p>
 
-<label>
+<div class="product-options">
 
-    Talle
-
-</label>
-
-<select class="product-size">
+    <div class="product-option">
+        <label>Talle</label>
+        <select class="product-size">
 
     <option>38</option>
     <option>40</option>
 
 </select>
+    </div>
 
-<label>
-
-    Cantidad
-
-</label>
-
-<input
+    <div class="product-option">
+        <label>Cantidad</label>
+        <input
     class="product-quantity"
     type="number"
     value="1"
     min="1">
+    </div>
+
+</div>
 
 <button
     class="view-product"
@@ -1356,7 +1383,7 @@ data-category="Remeras">
 
 <div class="product-image">
 
-    <img
+    <img loading="lazy" decoding="async"
         src="assets/img/remeras-oversize1.jpg"
         alt="Remeras Oversize">
 
@@ -1374,13 +1401,11 @@ data-category="Remeras">
 
 </p>
 
-<label>
+<div class="product-options">
 
-    Talle
-
-</label>
-
-<select class="product-size">
+    <div class="product-option">
+        <label>Talle</label>
+        <select class="product-size">
 
     <option>S</option>
     <option>M</option>
@@ -1388,14 +1413,11 @@ data-category="Remeras">
     <option>XL</option>
 
 </select>
+    </div>
 
-<label>
-
-    Color
-
-</label>
-
-<select class="product-color">
+    <div class="product-option">
+        <label>Color</label>
+        <select class="product-color">
 
     <option value="Negro">Negro</option>
     <option value="Blanco">Blanco</option>
@@ -1403,14 +1425,11 @@ data-category="Remeras">
     <option value="Gris">Verde Oscuro</option>
 
 </select>
+    </div>
 
-<label>
-
-    Cantidad
-
-</label>
-
-<input
+    <div class="product-option">
+        <label>Cantidad</label>
+        <input
 
 class="product-quantity"
 
@@ -1419,6 +1438,9 @@ type="number"
 value="1"
 
 min="1">
+    </div>
+
+</div>
 
 <button
     class="view-product"
@@ -1475,7 +1497,7 @@ data-category="Pantalones">
 
 <div class="product-image">
 
-    <img
+    <img loading="lazy" decoding="async"
         src="assets/img/bermudas-baggy-rio-glitch1.jpg"
         alt="Bermudas Baggy Rio Glitch">
 
@@ -1493,13 +1515,11 @@ data-category="Pantalones">
 
 </p>
 
-<label>
+<div class="product-options">
 
-    Talle
-
-</label>
-
-<select class="product-size">
+    <div class="product-option">
+        <label>Talle</label>
+        <select class="product-size">
 
     <option>38</option>
     <option>40</option>
@@ -1508,18 +1528,18 @@ data-category="Pantalones">
     <option>46</option>
 
 </select>
+    </div>
 
-<label>
-
-    Cantidad
-
-</label>
-
-<input
+    <div class="product-option">
+        <label>Cantidad</label>
+        <input
     class="product-quantity"
     type="number"
     value="1"
     min="1">
+    </div>
+
+</div>
 
 <button
     class="view-product"
@@ -1574,7 +1594,7 @@ data-category="Remeras">
 
 <div class="product-image">
 
-    <img
+    <img loading="lazy" decoding="async"
         src="assets/img/baby-tee-sao-paulo1.jpg"
         alt="Baby Tee São Paulo">
 
@@ -1592,13 +1612,11 @@ data-category="Remeras">
 
 </p>
 
-<label>
+<div class="product-options">
 
-    Talle
-
-</label>
-
-<select class="product-size">
+    <div class="product-option">
+        <label>Talle</label>
+        <select class="product-size">
 
     <option>S</option>
     <option>M</option>
@@ -1606,27 +1624,21 @@ data-category="Remeras">
     <option>XL</option>
 
 </select>
+    </div>
 
-<label>
-
-    Color
-
-</label>
-
-<select class="product-color">
+    <div class="product-option">
+        <label>Color</label>
+        <select class="product-color">
 
     <option value="Negro">Amarillo</option>
     <option value="Blanco">Verde</option>
 
 </select>
+    </div>
 
-<label>
-
-    Cantidad
-
-</label>
-
-<input
+    <div class="product-option">
+        <label>Cantidad</label>
+        <input
 
 class="product-quantity"
 
@@ -1635,6 +1647,9 @@ type="number"
 value="1"
 
 min="1">
+    </div>
+
+</div>
 
 <button
     class="view-product"
@@ -1691,7 +1706,7 @@ data-category="Accesorios">
 
 <div class="product-image">
 
-    <img
+    <img loading="lazy" decoding="async"
         src="assets/img/bolsa-bahia-bag1.jpg"
         alt="Bolsa Bahia Bag">
 
@@ -1709,17 +1724,19 @@ data-category="Accesorios">
 
 </p>
 
-<label>
+<div class="product-options">
 
-    Cantidad
-
-</label>
-
-<input
+    <div class="product-option">
+        <label>Cantidad</label>
+        <input
     class="product-quantity"
     type="number"
     value="1"
     min="1">
+    </div>
+
+</div>
+
 
 <button
     class="view-product"
@@ -1774,7 +1791,7 @@ data-category="Accesorios">
 
 <div class="product-image">
 
-    <img
+    <img loading="lazy" decoding="async"
         src="assets/img/bolsa-medusa-mar1.jpg"
         alt="Bolsa Medusa Mar">
 
@@ -1792,17 +1809,19 @@ data-category="Accesorios">
 
 </p>
 
-<label>
+<div class="product-options">
 
-    Cantidad
-
-</label>
-
-<input
+    <div class="product-option">
+        <label>Cantidad</label>
+        <input
     class="product-quantity"
     type="number"
     value="1"
     min="1">
+    </div>
+
+</div>
+
 
 <button
     class="view-product"
@@ -1857,7 +1876,7 @@ data-category="Remeras">
 
 <div class="product-image">
 
-    <img
+    <img loading="lazy" decoding="async"
         src="assets/img/camiseta-utopia2.jpg"
         alt="Camiseta Utopía">
 
@@ -1875,29 +1894,27 @@ data-category="Remeras">
 
 </p>
 
-<label>
+<div class="product-options">
 
-    Talle
-
-</label>
-
-<select class="product-size">
+    <div class="product-option">
+        <label>Talle</label>
+        <select class="product-size">
 
     <option>Talle único</option>
 
 </select>
+    </div>
 
-<label>
-
-    Cantidad
-
-</label>
-
-<input
+    <div class="product-option">
+        <label>Cantidad</label>
+        <input
     class="product-quantity"
     type="number"
     value="1"
     min="1">
+    </div>
+
+</div>
 
 <button
     class="view-product"
@@ -1952,7 +1969,7 @@ data-category="Accesorios">
 
 <div class="product-image">
 
-    <img
+    <img loading="lazy" decoding="async"
         src="assets/img/headpiece-raio-de-sol1.jpg"
         alt="Headpiece Raio de Sol">
 
@@ -1970,17 +1987,19 @@ data-category="Accesorios">
 
 </p>
 
-<label>
+<div class="product-options">
 
-    Cantidad
-
-</label>
-
-<input
+    <div class="product-option">
+        <label>Cantidad</label>
+        <input
     class="product-quantity"
     type="number"
     value="1"
     min="1">
+    </div>
+
+</div>
+
 
 <button
     class="view-product"
@@ -2035,7 +2054,7 @@ data-category="Pantalones">
 
 <div class="product-image">
 
-    <img
+    <img loading="lazy" decoding="async"
         src="assets/img/jean-baggy-strass1.jpg"
         alt="Jean Baggy Strass">
 
@@ -2053,13 +2072,11 @@ data-category="Pantalones">
 
 </p>
 
-<label>
+<div class="product-options">
 
-    Talle
-
-</label>
-
-<select class="product-size">
+    <div class="product-option">
+        <label>Talle</label>
+        <select class="product-size">
 
     <option>38</option>
     <option>40</option>
@@ -2069,30 +2086,27 @@ data-category="Pantalones">
     <option>48</option>
 
 </select>
+    </div>
 
-<label>
-
-    Color
-
-</label>
-
-<select class="product-color">
+    <div class="product-option">
+        <label>Color</label>
+        <select class="product-color">
 
     <option value="Negro">Negro</option>
 
 </select>
+    </div>
 
-<label>
-
-    Cantidad
-
-</label>
-
-<input
+    <div class="product-option">
+        <label>Cantidad</label>
+        <input
     class="product-quantity"
     type="number"
     value="1"
     min="1">
+    </div>
+
+</div>
 
 <button
     class="view-product"
@@ -2112,53 +2126,12 @@ data-category="Pantalones">
 
 </div>
 
+</div><!-- /.products-grid -->
+
 </section>
 
-<!-- ========================================= -->
-<!-- CARRITO -->
-<!-- ========================================= -->
 
-<div id="cart-button" class="cart-button">
 
-🛒
-
-<span id="cart-count">
-
-0
-
-</span>
-
-</div>
-
-<aside id="cart" class="cart">
-
-    <h2>🛒 Mi carrito</h2>
-
-    <div id="cart-items">
-
-        <p>Todavía no agregaste productos.</p>
-
-    </div>
-
-    <h3>
-
-        Total:
-
-        <span id="cart-total">
-
-            $0
-
-        </span>
-
-    </h3>
-
-    <button id="checkout" class="btn">
-
-        Finalizar compra
-
-    </button>
-
-</aside>
 
 
 
@@ -2202,55 +2175,150 @@ nuestras prendas.
 
 <div class="look-placeholder">
 
-<img src="assets/img/camiseta-utopia5.jpg" alt="Look GAREZ - Camiseta Utopía">
+<img loading="lazy" decoding="async" src="assets/img/camiseta-utopia5.jpg" alt="Look GAREZ - Camiseta Utopía">
 
 </div>
 
 <div class="look-placeholder">
 
-<img src="assets/img/buzo-canguro-dark-moon-strass3.jpg" alt="Look GAREZ - Buzo Canguro Dark Moon">
+<img loading="lazy" decoding="async" src="assets/img/buzo-canguro-dark-moon-strass3.jpg" alt="Look GAREZ - Buzo Canguro Dark Moon">
 
 </div>
 
 <div class="look-placeholder">
 
-<img src="assets/img/remera-boxy-california2.jpg" alt="Look GAREZ - Remera Boxy California">
+<img loading="lazy" decoding="async" src="assets/img/remera-boxy-california2.jpg" alt="Look GAREZ - Remera Boxy California">
 
 </div>
 
 <div class="look-placeholder">
 
-<img src="assets/img/camiseta-utopia1.jpg" alt="Look GAREZ - Camiseta Utopía">
+<img loading="lazy" decoding="async" src="assets/img/camiseta-utopia1.jpg" alt="Look GAREZ - Camiseta Utopía">
 
 </div>
 
 <div class="look-placeholder">
 
-<img src="assets/img/remeras-oversize3.jpg" alt="Look GAREZ - Remera Oversize">
+<img loading="lazy" decoding="async" src="assets/img/remeras-oversize3.jpg" alt="Look GAREZ - Remera Oversize">
 
 </div>
 
 <div class="look-placeholder">
 
-<img src="assets/img/buzo-canguro-frisado4.jpg" alt="Look GAREZ - Buzo Canguro Frisado">
+<img loading="lazy" decoding="async" src="assets/img/buzo-canguro-frisado4.jpg" alt="Look GAREZ - Buzo Canguro Frisado">
 
 </div>
 
 <div class="look-placeholder">
 
-<img src="assets/img/remeras-oversize4.jpg" alt="Look GAREZ - Remera Oversize">
+<img loading="lazy" decoding="async" src="assets/img/remeras-oversize4.jpg" alt="Look GAREZ - Remera Oversize">
 
 </div>
 
 <div class="look-placeholder">
 
-<img src="assets/img/buzo-canguro-dark-moon-strass4.jpg" alt="Look GAREZ - Buzo Canguro Dark Moon">
+<img loading="lazy" decoding="async" src="assets/img/buzo-canguro-dark-moon-strass4.jpg" alt="Look GAREZ - Buzo Canguro Dark Moon">
 
 </div>
 
 </div>
 
 </section>
+
+</main>
+
+
+<!-- ========================================= -->
+<!-- CARRITO -->
+<!-- ========================================= -->
+
+<button
+    id="cart-button"
+    class="cart-button"
+    type="button"
+    aria-label="Abrir carrito">
+
+    <svg
+        class="cart-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true">
+
+        <circle cx="9" cy="20" r="1.4"></circle>
+        <circle cx="18" cy="20" r="1.4"></circle>
+        <path d="M2 3h2.2l2.4 12.1a1.6 1.6 0 0 0 1.6 1.3h8.7a1.6 1.6 0 0 0 1.6-1.3L21 7H5.3"></path>
+
+    </svg>
+
+    <span id="cart-count" class="cart-count">
+
+        0
+
+    </span>
+
+</button>
+
+<aside
+    id="cart"
+    class="cart"
+    aria-label="Carrito de compras">
+
+    <div class="cart-header">
+
+        <h2>Mi carrito</h2>
+
+        <button
+            id="close-cart"
+            class="close-cart"
+            type="button"
+            aria-label="Cerrar carrito">
+
+            &times;
+
+        </button>
+
+    </div>
+
+    <div id="cart-items" class="cart-items">
+
+        <p class="cart-empty">
+
+            Todavía no agregaste productos.
+
+        </p>
+
+    </div>
+
+    <div class="cart-footer">
+
+        <div class="cart-total-row">
+
+            <span>Total</span>
+
+            <strong id="cart-total">
+
+                $0
+
+            </strong>
+
+        </div>
+
+        <button id="checkout" class="btn">
+
+            Finalizar compra
+
+        </button>
+
+    </div>
+
+</aside>
+
+<div id="cart-overlay" class="cart-overlay"></div>
+
 
 <!-- ========================================= -->
 <!-- FOOTER -->
@@ -2320,7 +2388,7 @@ WhatsApp
 
 href="https://wa.me/5491162538655"
 
-target="_blank"
+target="_blank" rel="noopener noreferrer"
 
 >
 
@@ -2340,7 +2408,7 @@ Instagram
 
 href="https://instagram.com/garez.at"
 
-target="_blank"
+target="_blank" rel="noopener noreferrer"
 
 >
 
@@ -2380,9 +2448,6 @@ Producto agregado al carrito
 
 </div>
 
-<script src="script.js"></script>
-
-</main>
 
 <!-- ========================================= -->
 <!-- MODAL DEL PRODUCTO -->
@@ -2406,7 +2471,7 @@ Producto agregado al carrito
 
     </button>
 
-    <img
+    <img loading="lazy" decoding="async"
         id="modal-product-image"
         src=""
         alt="">
@@ -3042,5 +3107,21 @@ Producto agregado al carrito
 
     </span>
 
-</div>
-    
+</div><!-- /.checkout-actions -->
+
+</div><!-- /.checkout-section -->
+
+</div><!-- /.checkout-content -->
+
+</div><!-- /.checkout-modal -->
+
+
+<!-- ========================================= -->
+<!-- SCRIPTS -->
+<!-- ========================================= -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

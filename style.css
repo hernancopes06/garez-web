@@ -178,7 +178,7 @@ img{
 .hero-logo {
     display: block;
 
-    margin: 0 0 15px 0;
+    margin: 0 0 24px 0;
 
     padding: 0;
 
@@ -186,8 +186,8 @@ img{
 }
 
 .hero-logo img {
-    width: 380px;
-    max-width: 70vw;
+    width: 420px;
+    max-width: 78vw;
 
     height: auto;
 
@@ -206,7 +206,7 @@ img{
 .hero > p {
     display: block;
 
-    margin: -15px 0 20px 0;
+    margin: 0 0 28px 0;
 
     font-size: 1.3rem;
 
@@ -1167,411 +1167,6 @@ footer{
 /* RESPONSIVE */
 /* ========================================= */
 
-@media(max-width:900px){
-
-    /* ============================== */
-/* NAVBAR */
-/* ============================== */
-
-.navbar{
-
-    padding:20px;
-
-    flex-direction:row;
-
-    height:80px;
-
-    gap:15px;
-
-}
-
-
-.menu{
-
-    flex-wrap:nowrap;
-
-    justify-content:center;
-
-    gap:18px;
-
-}
-
-
-    /* ============================== */
-    /* HERO */
-    /* ============================== */
-
-    .hero-content h1{
-
-        font-size:3.8rem;
-
-        letter-spacing:6px;
-
-    }
-
-
-    /* ============================== */
-    /* SECCIONES */
-    /* ============================== */
-
-    .section-header h2{
-
-        font-size:2.2rem;
-
-    }
-
-
-    .corporate-contact{
-
-        flex-direction:column;
-
-        text-align:center;
-
-    }
-
-
-    /* ============================== */
-    /* FOOTER */
-    /* ============================== */
-
-    .footer-container{
-
-        grid-template-columns:1fr;
-
-        text-align:center;
-
-    }
-
-
-    /* ============================== */
-    /* CARRITO */
-    /* ============================== */
-
-    .cart{
-
-        width:90%;
-
-        max-width:360px;
-
-        right:-100%;
-
-        left:auto;
-
-        top:90px;
-
-        bottom:auto;
-
-        max-height:calc(100vh - 110px);
-
-    }
-
-
-    .cart.open{
-
-        right:0;
-
-    }
-
-
-    /* ============================== */
-    /* GRIDS */
-    /* ============================== */
-
-    .products-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-
-    .lookbook-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-
-    .clients-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-
-    .business-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-
-    .shipping-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-}
-
-/* ============================== */
-/* NAVBAR — CELULAR */
-/* ============================== */
-
-@media(max-width:700px){
-
-    .navbar{
-
-        position:fixed;
-
-        top:0;
-        left:0;
-
-        width:100%;
-
-        height:82px;
-
-        padding:6px 8px;
-
-        display:flex;
-
-        flex-direction:row;
-
-        align-items:center;
-
-        justify-content:space-between;
-
-        gap:6px;
-
-        box-sizing:border-box;
-
-    }
-
-
-    /* ============================== */
-    /* LOGO */
-    /* ============================== */
-
-    .logo{
-
-        flex:0 0 58px;
-
-        width:58px;
-
-        display:flex;
-
-        align-items:center;
-
-        margin:0;
-
-    }
-
-
-    .logo img{
-
-        width:55px;
-
-        height:auto;
-
-        display:block;
-
-    }
-
-
-    /* ============================== */
-    /* ZONA DEL MENÚ */
-    /* ============================== */
-
-    .navbar nav{
-
-        flex:1;
-
-        min-width:0;
-
-        height:70px;
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:center;
-
-        overflow:hidden;
-
-    }
-
-
-    /* ============================== */
-    /* APARTADOS */
-    /* ============================== */
-
-    .menu{
-
-        display:flex;
-
-        flex-direction:row;
-
-        flex-wrap:wrap;
-
-        align-items:center;
-
-        justify-content:center;
-
-        align-content:center;
-
-        column-gap:14px;
-
-        row-gap:9px;
-
-        width:100%;
-
-        margin:0;
-
-        padding:0;
-
-        list-style:none;
-
-    }
-
-
-    /* ============================== */
-    /* CADA APARTADO */
-    /* ============================== */
-
-    .menu li{
-
-        flex:0 0 auto;
-
-        margin:0;
-
-        padding:0;
-
-        white-space:nowrap;
-
-    }
-
-
-    /* ============================== */
-    /* TEXTO DE LOS APARTADOS */
-    /* ============================== */
-
-    .menu a{
-
-        display:block;
-
-        padding:3px 2px;
-
-        font-size:10px;
-
-        line-height:1.1;
-
-        font-weight:600;
-
-        white-space:nowrap;
-
-        text-align:center;
-
-    }
-
-
-    /* ============================== */
-    /* BOTÓN EMPRESA */
-    /* ============================== */
-
-    .switch{
-
-        flex:0 0 auto;
-
-        max-width:76px;
-
-        margin:0;
-
-        padding:7px 8px;
-
-        font-size:7px;
-
-        line-height:1.1;
-
-        text-align:center;
-
-        white-space:normal;
-
-        border-radius:20px;
-
-        box-sizing:border-box;
-
-    }
-
-/* ========================================= */
-    /* PRODUCTOS — SCROLL HORIZONTAL CELULAR */
-    /* ========================================= */
-
-    .products-grid{
-
-        display:flex !important;
-        flex-direction:row !important;
-        flex-wrap:nowrap !important;
-        overflow-x:auto !important;
-        overflow-y:hidden !important;
-
-        gap:16px !important;
-
-        width:100% !important;
-
-        padding:5px 5px 15px !important;
-
-        box-sizing:border-box;
-
-        scroll-snap-type:x mandatory;
-    }
-
-   .products-grid .product-card{
-
-    flex:0 0 52% !important;
-width:52% !important;
-min-width:52% !important;
-
-    padding:16px !important;
-
-    scroll-snap-align:start;
-}
-
-.products-grid .product-image{
-
-    height:180px !important;
-
-    margin-bottom:14px !important;
-
-    border-radius:12px !important;
-}
-
-.products-grid .product-card h3{
-
-    font-size:1.15rem !important;
-
-    margin-bottom:8px !important;
-}
-
-.products-grid .price{
-
-    font-size:1.1rem !important;
-
-    margin-bottom:16px !important;
-}
-
-    .products-grid::-webkit-scrollbar{
-        height:6px;
-    }
-
-    .products-grid::-webkit-scrollbar-thumb{
-        background:#999;
-        border-radius:10px;
-    }
-
-    .products-grid::-webkit-scrollbar-track{
-        background:#eee;
-    }
-
-}
 
 /*================================*/
 /* BOTÓN DEL CARRITO */
@@ -2902,7 +2497,9 @@ MODAL PRODUCTO
 
     padding:14px 24px;
 
-    border-radius:10px;
+    /* mismo radio que #calculate-shipping para que
+       los dos botones del checkout combinen */
+    border-radius:30px;
 
     font-size:14px;
 
@@ -3019,13 +2616,11 @@ MODAL PRODUCTO
 
     .shipping-option{
 
-        grid-template-columns:auto 1fr;
+        flex-wrap:wrap;
 
-    }
+        gap:12px;
 
-    .shipping-option > strong{
-
-        grid-column:2;
+        padding:14px;
 
     }
 
@@ -3423,8 +3018,8 @@ MODAL PRODUCTO
 }
 
 .logo img {
-    width: 105px;
-    height: auto;
+    height: 30px;
+    width: auto;
     display: block;
     object-fit: contain;
 }
@@ -3508,367 +3103,1863 @@ MODAL PRODUCTO
     display: block;
 }
 
-/* ========================================= */
-/* PRODUCTOS — AJUSTE CELULAR FINAL */
-/* ========================================= */
 
-@media (max-width:700px){
 
-    .products-grid{
-        display:flex !important;
-        flex-direction:row !important;
-        flex-wrap:nowrap !important;
-        overflow-x:auto !important;
-        overflow-y:hidden !important;
 
-        gap:12px !important;
-        padding:5px 12px 15px !important;
 
-        width:100% !important;
-        box-sizing:border-box !important;
+/* =========================================================
+   FICHAS DE PRODUCTO
+   Reemplaza el bloque anterior de "altura pareja".
+   ========================================================= */
 
-        scroll-snap-type:x mandatory;
-    }
+.product-card{
+    position:relative;
 
-    .products-grid .product-card{
-        flex:0 0 52% !important;
-        width:52% !important;
-        min-width:52% !important;
-        max-width:52% !important;
+    display:flex;
+    flex-direction:column;
 
-        padding:14px !important;
+    background:#fff;
 
-        scroll-snap-align:start;
-    }
+    border:1px solid #ececec;
+    border-radius:20px;
 
-    .products-grid .product-image{
-        height:180px !important;
-        margin-bottom:12px !important;
-    }
+    padding:16px;
 
-    .products-grid .product-card h3{
-        font-size:1rem !important;
-        margin-bottom:6px !important;
-    }
+    overflow:hidden;
 
-    .products-grid .price{
-        font-size:1rem !important;
-        margin-bottom:12px !important;
+    transition:transform .3s ease,
+               box-shadow .3s ease,
+               border-color .3s ease;
+}
+
+.product-card:hover{
+    transform:translateY(-6px);
+
+    border-color:#dcdcdc;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.10);
+}
+
+
+/* ---------- IMAGEN ---------- */
+
+.product-image{
+    position:relative;
+
+    /* 4:5 es la proporcion tipica de indumentaria y deja
+       todas las fichas parejas aunque las fotos no lo esten */
+    aspect-ratio:4 / 5;
+    height:auto;
+
+    margin-bottom:16px;
+
+    border-radius:14px;
+
+    background:#f4f4f4;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    flex:0 0 auto;
+}
+
+.product-image img{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:0;
+
+    transition:transform .55s ease;
+}
+
+.product-card:hover .product-image img{
+    transform:scale(1.06);
+}
+
+
+/* ---------- ETIQUETA Y FAVORITO ---------- */
+
+.product-badge{
+    top:26px;
+    left:26px;
+
+    padding:6px 11px;
+
+    font-size:10px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.favorite-btn{
+    top:26px;
+    right:26px;
+
+    width:38px;
+    height:38px;
+
+    font-size:20px;
+    line-height:38px;
+}
+
+
+/* ---------- TEXTO ---------- */
+
+.product-card h3{
+    font-size:1.02rem;
+    font-weight:700;
+    line-height:1.3;
+
+    margin-bottom:6px;
+
+    /* nombres largos a 2 lineas, para que no descuadren la fila */
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+.product-card .price{
+    font-size:1.15rem;
+    font-weight:800;
+
+    margin-bottom:16px;
+
+    color:#111;
+}
+
+
+/* ---------- OPCIONES (TALLE / COLOR / CANTIDAD) ---------- */
+
+.product-options{
+    display:grid;
+
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+
+    gap:10px;
+
+    margin-bottom:16px;
+}
+
+/* Si hay 3 controles, el ultimo ocupa la fila entera */
+
+.product-option:nth-child(3):last-child{
+    grid-column:1 / -1;
+}
+
+/* Si hay uno solo (accesorios), tambien */
+
+.product-option:only-child{
+    grid-column:1 / -1;
+}
+
+.product-option label{
+    display:block;
+
+    margin:0 0 5px;
+
+    font-size:.7rem;
+    font-weight:700;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+
+    color:#888;
+}
+
+.product-card select,
+.product-card input{
+    width:100%;
+
+    margin:0;
+
+    padding:10px 12px;
+
+    font-family:inherit;
+    font-size:.88rem;
+
+    color:#111;
+
+    background:#fafafa;
+
+    border:1px solid #e2e2e2;
+    border-radius:10px;
+
+    transition:border-color .2s ease, background .2s ease;
+}
+
+.product-card select{
+    /* flecha propia: la nativa cambia mucho entre navegadores */
+    appearance:none;
+    -webkit-appearance:none;
+
+    padding-right:30px;
+
+    background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23666' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 11px center;
+
+    cursor:pointer;
+}
+
+.product-card select:focus,
+.product-card input:focus{
+    outline:none;
+
+    background:#fff;
+    border-color:#111;
+}
+
+
+/* ---------- BOTONES ---------- */
+/* Antes eran dos pastillas negras iguales, una arriba de la otra.
+   Ahora hay una sola accion principal. */
+
+.product-card .add-cart{
+    order:2;
+
+    width:100%;
+
+    margin:0;
+    margin-top:auto;
+
+    padding:13px 16px;
+
+    font-size:.85rem;
+    font-weight:700;
+    letter-spacing:.4px;
+
+    border-radius:30px;
+}
+
+.product-card .view-product{
+    order:3;
+
+    width:100%;
+
+    margin:8px 0 0;
+
+    padding:9px 12px;
+
+    font-size:.78rem;
+    font-weight:600;
+    letter-spacing:.3px;
+
+    color:#777;
+
+    background:transparent;
+
+    border:none;
+    border-radius:0;
+}
+
+.product-card .view-product:hover{
+    color:#111;
+
+    background:transparent;
+    transform:none;
+
+    text-decoration:underline;
+    text-underline-offset:3px;
+}
+
+/* Empuja los botones al fondo: quedan alineados entre fichas
+   sin abrir un hueco debajo del precio */
+
+.product-card .add-cart{
+    margin-top:auto;
+}
+
+
+/* ---------- FOCO VISIBLE (teclado) ---------- */
+
+.product-card .add-cart:focus-visible,
+.product-card .view-product:focus-visible,
+.product-card select:focus-visible,
+.favorite-btn:focus-visible,
+.product-image:focus-visible{
+    outline:2px solid #111;
+    outline-offset:2px;
+}
+
+
+/* =========================================================
+   BUSCADOR Y FILTRO DE LA TIENDA
+   ========================================================= */
+
+.store-controls{
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:12px;
+
+    margin:44px auto 40px;
+
+    max-width:620px;
+
+    flex-wrap:wrap;
+}
+
+.store-controls input,
+.store-controls select{
+    height:50px;
+
+    padding:0 18px;
+
+    font-family:inherit;
+    font-size:.95rem;
+
+    color:#111;
+
+    background:#fafafa;
+
+    border:1px solid #e2e2e2;
+    border-radius:12px;
+
+    transition:border-color .2s ease,
+               background .2s ease,
+               box-shadow .2s ease;
+}
+
+.store-controls input{
+    flex:1 1 300px;
+
+    min-width:0;
+}
+
+.store-controls input::placeholder{
+    color:#9a9a9a;
+}
+
+.store-controls select{
+    flex:0 0 auto;
+
+    /* flecha propia, igual que la de las fichas */
+    appearance:none;
+    -webkit-appearance:none;
+
+    padding-right:40px;
+
+    background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23666' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 16px center;
+
+    cursor:pointer;
+}
+
+.store-controls input:focus,
+.store-controls select:focus{
+    outline:none;
+
+    background:#fff;
+
+    border-color:#111;
+
+    box-shadow:0 0 0 3px rgba(17,17,17,.07);
+}
+
+
+/* =========================================================
+   MENSAJE DE "SIN RESULTADOS"
+   ========================================================= */
+
+.sin-resultados{
+    grid-column:1 / -1;
+
+    width:100%;
+
+    padding:50px 20px;
+
+    text-align:center;
+
+    color:#888;
+    font-size:1rem;
+}
+
+
+/* =========================================================
+   BOTONES DEL CHECKOUT
+   La clase .checkout-payment-btn se usaba en el HTML pero no
+   estaba definida: los dos botones salian sin estilo.
+   ========================================================= */
+
+.checkout-payment-btn{
+    width:100%;
+
+    padding:15px 22px;
+
+    font-family:inherit;
+    font-size:.95rem;
+    font-weight:700;
+    letter-spacing:.4px;
+
+    color:#fff;
+
+    background:#111;
+
+    border:1px solid #111;
+    border-radius:30px;
+
+    cursor:pointer;
+
+    transition:transform .2s ease,
+               background .2s ease,
+               box-shadow .2s ease;
+}
+
+.checkout-payment-btn:hover{
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+
+.checkout-payment-btn:active{
+    transform:translateY(0);
+}
+
+.checkout-payment-btn:disabled{
+    opacity:.55;
+
+    cursor:not-allowed;
+    transform:none;
+    box-shadow:none;
+}
+
+.checkout-payment-btn:focus-visible{
+    outline:2px solid #111;
+    outline-offset:3px;
+}
+
+
+/* "Calcular envío" es un paso intermedio, no la accion final:
+   va en secundario para que no compita con "Continuar al pago" */
+
+#calculate-shipping{
+    margin-top:6px;
+
+    color:#111;
+
+    background:transparent;
+
+    border:1px solid #d5d5d5;
+}
+
+#calculate-shipping:hover{
+    background:#f5f5f5;
+
+    border-color:#111;
+
+    box-shadow:none;
+}
+
+
+/* =========================================================
+   OPCIONES DE ENVÍO
+   ========================================================= */
+
+.flex-option{
+    padding:11px 12px;
+
+    border:1px solid transparent;
+    border-radius:10px;
+
+    transition:background .2s ease, border-color .2s ease;
+}
+
+.flex-option:hover{
+    background:#f7f7f7;
+}
+
+/* Marcar cual quedo elegida.
+   La clase la pone el JS: con :has() el recuadro no se marcaba
+   y ademas Safari viejo no lo soporta. */
+
+.flex-option.seleccionada{
+    font-weight:600;
+
+    background:#fff;
+
+    border-color:#111;
+
+    box-shadow:0 0 0 3px rgba(17,17,17,.06);
+}
+
+.flex-option input[type="radio"]{
+    accent-color:#111;
+
+    width:17px;
+    height:17px;
+}
+
+.flex-option:focus-within{
+    border-color:#111;
+}
+
+
+/* =========================================================
+   CARRITO — PANEL
+   ========================================================= */
+
+.cart{
+    display:flex;
+    flex-direction:column;
+
+    padding:0;
+
+    /* con overflow en el panel entero, el pie se iba de vista;
+       ahora scrollea solo la lista */
+    overflow:hidden;
+
+    border-radius:20px 0 0 20px;
+}
+
+.cart-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:12px;
+
+    padding:22px 24px 16px;
+
+    border-bottom:1px solid #eee;
+}
+
+.cart h2{
+    margin:0;
+
+    font-size:1.25rem;
+    font-weight:800;
+    letter-spacing:.3px;
+}
+
+.close-cart{
+    width:34px;
+    height:34px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:26px;
+    line-height:1;
+
+    color:#666;
+
+    background:transparent;
+    border:none;
+    border-radius:50%;
+
+    cursor:pointer;
+
+    transition:background .2s ease, color .2s ease;
+}
+
+.close-cart:hover{
+    background:#f2f2f2;
+    color:#111;
+}
+
+
+/* ---------- FONDO OSCURO (celular) ---------- */
+
+.cart-overlay{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.4);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:opacity .3s ease, visibility .3s ease;
+
+    z-index:9997;
+}
+
+
+/* ---------- LISTA ---------- */
+
+.cart-items{
+    flex:1;
+
+    min-height:120px;
+    max-height:none;
+
+    overflow-y:auto;
+
+    padding:8px 24px;
+
+    margin:0;
+}
+
+.cart-empty{
+    padding:40px 0;
+
+    text-align:center;
+
+    color:#999;
+    font-size:.92rem;
+}
+
+
+/* ---------- UNA LINEA DEL CARRITO ---------- */
+
+.cart-item{
+    display:grid;
+
+    grid-template-columns:58px 1fr auto;
+
+    align-items:start;
+
+    gap:12px;
+
+    padding:16px 0;
+
+    border-bottom:1px solid #f0f0f0;
+}
+
+.cart-item:last-child{
+    border-bottom:none;
+}
+
+.cart-item-img{
+    width:58px;
+    height:58px;
+
+    border-radius:10px;
+
+    background:#f4f4f4;
+
+    overflow:hidden;
+}
+
+.cart-item-img img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.cart-item-info{
+    display:flex;
+    flex-direction:column;
+
+    gap:5px;
+
+    min-width:0;
+}
+
+.cart-item-info strong{
+    font-size:.92rem;
+    font-weight:700;
+    line-height:1.3;
+
+    color:#111;
+}
+
+.cart-item-meta{
+    font-size:.78rem;
+
+    color:#888;
+}
+
+
+/* ---------- CANTIDAD ---------- */
+
+.cart-qty{
+    display:inline-flex;
+    align-items:center;
+
+    gap:2px;
+
+    margin-top:3px;
+
+    width:fit-content;
+
+    border:1px solid #e2e2e2;
+    border-radius:8px;
+
+    overflow:hidden;
+}
+
+.cart-qty-btn{
+    width:26px;
+    height:26px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-family:inherit;
+    font-size:15px;
+    line-height:1;
+
+    color:#111;
+
+    background:#fafafa;
+    border:none;
+
+    cursor:pointer;
+
+    transition:background .15s ease;
+}
+
+.cart-qty-btn:hover{
+    background:#ebebeb;
+}
+
+.cart-qty-valor{
+    min-width:28px;
+
+    text-align:center;
+
+    font-size:.85rem;
+    font-weight:700;
+}
+
+
+/* ---------- PRECIO Y ELIMINAR ---------- */
+
+.cart-item-right{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+
+    gap:8px;
+
+    white-space:nowrap;
+}
+
+.cart-item-right strong{
+    font-size:.92rem;
+    font-weight:800;
+}
+
+/* Antes era un boton nativo del navegador */
+
+.eliminar-producto{
+    padding:0;
+
+    font-family:inherit;
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.2px;
+
+    color:#b03030;
+
+    background:none;
+    border:none;
+
+    cursor:pointer;
+
+    transition:color .2s ease;
+}
+
+.eliminar-producto:hover{
+    color:#7d1f1f;
+
+    text-decoration:underline;
+    text-underline-offset:2px;
+}
+
+
+/* ---------- PIE ---------- */
+
+.cart-footer{
+    padding:16px 24px 22px;
+
+    border-top:1px solid #eee;
+
+    background:#fff;
+
+    border-radius:0 0 0 20px;
+}
+
+.cart-total-row{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+
+    margin-bottom:14px;
+}
+
+.cart-total-row span{
+    font-size:.9rem;
+
+    color:#777;
+}
+
+.cart-total-row strong{
+    font-size:1.35rem;
+    font-weight:800;
+}
+
+.cart-footer .btn{
+    width:100%;
+
+    text-align:center;
+}
+
+.btn.is-disabled,
+.cart-footer .btn:disabled{
+    opacity:.4;
+
+    cursor:not-allowed;
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   CARRITO — BOTON FLOTANTE
+   ========================================================= */
+
+.cart-button{
+    border:none;
+
+    padding:0;
+
+    color:#fff;
+}
+
+.cart-icon{
+    width:26px;
+    height:26px;
+}
+
+.cart-count{
+    position:absolute;
+
+    top:6px;
+    right:6px;
+
+    min-width:22px;
+    height:22px;
+
+    padding:0 5px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:.72rem;
+    font-weight:800;
+
+    color:#fff;
+    background:#e02929;
+
+    border:2px solid #fff;
+    border-radius:11px;
+
+    transition:transform .2s ease, opacity .2s ease;
+}
+
+/* Sin productos no tiene sentido mostrarlo */
+
+.cart-count.is-empty{
+    opacity:0;
+
+    transform:scale(.6);
+}
+
+
+/* ---------- AVISO AL AGREGAR ---------- */
+
+@keyframes carritoLate{
+    0%   { transform:scale(1); }
+    30%  { transform:scale(1.18); }
+    55%  { transform:scale(.95); }
+    100% { transform:scale(1); }
+}
+
+.cart-button.late{
+    animation:carritoLate .6s ease;
+}
+
+@keyframes globitoSalta{
+    0%   { transform:scale(1); }
+    40%  { transform:scale(1.5); }
+    100% { transform:scale(1); }
+}
+
+.cart-count.salta{
+    animation:globitoSalta .5s ease;
+}
+
+/* El boton de la ficha confirma en el lugar */
+
+.add-cart.agregado{
+    background:#1c7c3f !important;
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   NOTIFICACION
+   ========================================================= */
+
+.notification{
+    /* sin z-index quedaba tapada por el boton del carrito */
+    z-index:10050;
+
+    max-width:min(420px, 88vw);
+
+    text-align:center;
+
+    font-size:.9rem;
+    font-weight:600;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+
+    transform:translateX(-50%) translateY(12px);
+
+    transition:opacity .3s ease, transform .3s ease;
+}
+
+.notification.show{
+    opacity:1;
+
+    transform:translateX(-50%) translateY(0);
+}
+
+
+/* =========================================================
+   GAREZ — CAPA RESPONSIVE UNIFICADA
+   Reemplaza los bloques @media duplicados anteriores.
+   Orden: escritorio -> tablet -> celular -> celular chico
+   ========================================================= */
+
+
+/* =========================================================
+   TIPOGRAFIA FLUIDA
+   ========================================================= */
+
+.hero-content h1,
+.hero h1{
+    font-size:clamp(2.4rem, 7vw, 5rem);
+}
+
+.section-header h2{
+    font-size:clamp(1.8rem, 4.5vw, 3rem);
+}
+
+.hero > p{
+    font-size:clamp(1rem, 2.4vw, 1.3rem);
+}
+
+
+/* =========================================================
+   BOTON HAMBURGUESA — oculto en escritorio
+   ========================================================= */
+
+.menu-toggle{
+    display:none;
+
+    width:44px;
+    height:44px;
+
+    padding:10px;
+
+    border:none;
+    background:transparent;
+
+    cursor:pointer;
+
+    flex-direction:column;
+    justify-content:space-between;
+
+    z-index:10001;
+}
+
+.menu-toggle span{
+    display:block;
+
+    width:100%;
+    height:2px;
+
+    background:#111;
+    border-radius:2px;
+
+    transition:transform .3s ease, opacity .2s ease;
+}
+
+.menu-toggle.open span:nth-child(1){
+    transform:translateY(11px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2){
+    opacity:0;
+}
+
+.menu-toggle.open span:nth-child(3){
+    transform:translateY(-11px) rotate(-45deg);
+}
+
+
+/* Fondo oscuro detras del menu movil */
+
+.nav-overlay{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:opacity .3s ease, visibility .3s ease;
+
+    z-index:9998;
+}
+
+.nav-overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+
+/* El item de empresa dentro del menu solo existe en movil */
+
+.menu-switch-item{
+    display:none;
+}
+
+
+/* =========================================================
+   ESCRITORIO ANCHO  (>= 1201px)
+   ========================================================= */
+
+@media (min-width:1201px){
+
+    /* 8 fotos en 4 columnas = 2 filas justas.
+       Con auto-fit salian 5 y la segunda fila quedaba coja. */
+
+    .lookbook-grid{
+        grid-template-columns:repeat(4, 1fr);
     }
 
 }
 
-/* =========================================
-   GAREZ — AJUSTE FINAL PARA CELULAR
-========================================= */
 
-@media (max-width:700px){
+/* =========================================================
+   ESCRITORIO INTERMEDIO  (<= 1200px)
+   ========================================================= */
 
-    /* ==============================
-       NAVBAR
-    ============================== */
+@media (max-width:1200px){
 
     .navbar{
-        position:fixed !important;
+        padding:0 40px;
+    }
 
-        top:0 !important;
-        left:0 !important;
+    .menu{
+        gap:24px;
+    }
 
-        width:100% !important;
-        height:64px !important;
+    section{
+        padding:90px 6%;
+    }
 
-        padding:0 8px !important;
+    /* 3 columnas fijas: el auto-fit se quedaba en 2 y las fichas
+       salian demasiado anchas */
 
-        display:flex !important;
-        flex-direction:row !important;
-        align-items:center !important;
-        justify-content:space-between !important;
+    .products-grid,
+    .lookbook-grid{
+        grid-template-columns:repeat(3, 1fr);
+    }
 
-        box-sizing:border-box !important;
-        overflow:hidden !important;
+}
 
-        gap:8px !important;
+
+/* =========================================================
+   TABLET  (<= 900px)  — aparece el menu hamburguesa
+   ========================================================= */
+
+@media (max-width:900px){
+
+    /* ---------- NAVBAR ---------- */
+
+    .navbar{
+        height:70px;
+
+        padding:0 20px;
+    }
+
+    .logo img{
+        height:26px;
+        width:auto;
+    }
+
+    .menu-toggle{
+        display:flex;
+
+        order:3;
+    }
+
+    /* El boton de escritorio se esconde: pasa a estar dentro del menu */
+
+    .switch-desktop{
+        display:none;
+    }
+
+    .menu-switch-item{
+        display:block;
+
+        margin-top:14px;
     }
 
 
-    /* ==============================
-       LOGO
-    ============================== */
-
-    .navbar .logo{
-        flex:0 0 58px !important;
-
-        width:58px !important;
-        min-width:58px !important;
-
-        display:flex !important;
-        align-items:center !important;
-
-        margin:0 !important;
-    }
-
-
-    .navbar .logo img{
-        width:55px !important;
-        height:auto !important;
-
-        display:block !important;
-    }
-
-
-    /* ==============================
-       MENÚ
-    ============================== */
+    /* ---------- PANEL DESLIZANTE ---------- */
 
     .navbar nav{
-        position:static !important;
+        position:fixed;
 
-        flex:1 1 auto !important;
-        min-width:0 !important;
+        top:0;
+        right:0;
 
-        height:64px !important;
+        width:min(300px, 82vw);
+        height:100vh;
+        height:100dvh;
 
-        display:flex !important;
-        align-items:center !important;
-        justify-content:center !important;
+        padding:100px 28px 40px;
 
-        overflow:hidden !important;
+        background:#fff;
+
+        box-shadow:-10px 0 40px rgba(0,0,0,.12);
+
+        transform:translateX(100%);
+        transition:transform .32s ease;
+
+        overflow-y:auto;
+
+        z-index:10000;
     }
 
-
-    .navbar .menu{
-        width:100% !important;
-
-        display:flex !important;
-        flex-direction:row !important;
-        flex-wrap:nowrap !important;
-
-        align-items:center !important;
-        justify-content:space-evenly !important;
-
-        gap:0 !important;
-
-        margin:0 !important;
-        padding:0 !important;
-
-        list-style:none !important;
-
-        overflow:hidden !important;
-        white-space:nowrap !important;
+    .navbar nav.open{
+        transform:translateX(0);
     }
 
-
-    .navbar .menu li{
-        flex:0 1 auto !important;
-
-        width:auto !important;
-
-        margin:0 !important;
-        padding:0 !important;
-
-        white-space:nowrap !important;
-    }
-
-
-    .navbar .menu a{
-        display:block !important;
-
-        padding:4px 3px !important;
-
-        font-size:9px !important;
-        line-height:1.1 !important;
-
-        font-weight:600 !important;
-
-        white-space:nowrap !important;
-        text-align:center !important;
-    }
-
-
-    /* ==============================
-       BOTÓN ¿SOS UNA EMPRESA?
-    ============================== */
-
-    .navbar .switch{
-        flex:0 0 auto !important;
-
-        max-width:78px !important;
-
-        padding:6px 7px !important;
-
-        margin:0 !important;
-
-        font-size:7px !important;
-        line-height:1.1 !important;
-
-        text-align:center !important;
-
-        white-space:nowrap !important;
-
-        border-radius:20px !important;
-
-        box-sizing:border-box !important;
-    }
-
-
-    /* ==============================
-       INICIO / HERO
-    ============================== */
-
-    .hero{
-        min-height:100vh;
-
-        padding:170px 20px 50px;
-    }
-
-
-    .hero-logo{
-        margin-bottom:5px;
-    }
-
-
-    .hero-logo img{
-        width:230px;
-        max-width:75vw;
-    }
-
-
-    .hero > p{
-        font-size:1rem;
-        margin:-5px 0 20px;
-    }
-
-
-    .buttons{
-        gap:10px;
-
+    .menu{
         flex-direction:column;
+        align-items:flex-start;
+
+        gap:4px;
 
         width:100%;
     }
 
+    .menu li{
+        width:100%;
+    }
 
-    .buttons .btn{
+    .menu li:hover{
+        transform:none;
+    }
+
+    .menu a{
+        display:block;
+
         width:100%;
 
-        max-width:280px;
+        padding:14px 4px;
 
-        padding:13px 20px;
+        font-size:1rem;
 
-        font-size:14px;
+        border-bottom:1px solid #eee;
+    }
+
+    .menu .switch{
+        display:block;
+
+        width:100%;
+
+        padding:14px 20px;
+
+        font-size:.95rem;
+
+        text-align:center;
+
+        border-bottom:none;
+    }
+
+    /* Bloquea el scroll del fondo con el menu abierto */
+
+    body.nav-open{
+        overflow:hidden;
     }
 
 
-    /* ==============================
-       CARRITO
-    ============================== */
+    /* ---------- SECCIONES ---------- */
+
+    section{
+        padding:80px 6%;
+    }
+
+    .corporate-contact{
+        flex-direction:column;
+        text-align:center;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    .footer-container{
+        grid-template-columns:1fr 1fr;
+
+        gap:40px;
+    }
+
+
+    /* ---------- CARRITO ---------- */
 
     .cart{
-        width:90%;
-
-        max-width:360px;
+        top:84px;
 
         right:-100%;
-
         left:auto;
 
-        top:90px;
+        width:min(360px, 90vw);
 
-        bottom:auto;
-
-        max-height:calc(100vh - 110px);
+        max-height:calc(100dvh - 110px);
     }
-
 
     .cart.open{
         right:0;
     }
 
-    /* ============================== */
-    /* PRODUCTOS — CELULAR COMPACTO */
-    /* ============================== */
+    .cart-button{
+        right:18px;
+        bottom:18px;
+
+        width:60px;
+        height:60px;
+
+        font-size:1.5rem;
+    }
+
+    /* Fondo oscuro detras del carrito. En escritorio no:
+       ahi el panel convive con la pagina. */
+
+    .cart-overlay.active{
+        opacity:1;
+        visibility:visible;
+    }
+
+
+    /* ---------- GRILLAS ---------- */
 
     .products-grid{
-        display:flex !important;
-        flex-direction:row !important;
-        flex-wrap:nowrap !important;
+        grid-template-columns:repeat(2, 1fr);
 
-        overflow-x:auto !important;
-        overflow-y:hidden !important;
+        gap:20px;
+    }
 
-        gap:14px !important;
+    .clients-grid,
+    .lookbook-grid{
+        grid-template-columns:repeat(2, 1fr);
 
-        padding:5px 8px 15px !important;
+        gap:20px;
+    }
 
-        width:100% !important;
-        box-sizing:border-box !important;
+}
+
+
+/* =========================================================
+   CELULAR  (<= 700px)
+   ========================================================= */
+
+@media (max-width:700px){
+
+    .navbar{
+        height:64px;
+
+        padding:0 14px;
+    }
+
+    .logo img{
+        height:23px;
+        width:auto;
+    }
+
+    .navbar nav{
+        padding:90px 24px 40px;
+    }
+
+
+    /* ---------- HERO ---------- */
+
+    .hero{
+        min-height:auto;
+
+        padding:120px 20px 60px;
+    }
+
+    .hero-logo img{
+        width:260px;
+        max-width:80vw;
+    }
+
+    .hero > p{
+        margin:0 0 24px;
+    }
+
+    .buttons{
+        flex-direction:column;
+
+        gap:12px;
+
+        width:100%;
+    }
+
+    .buttons .btn{
+        width:100%;
+        max-width:300px;
+
+        padding:14px 20px;
+
+        font-size:.9rem;
+    }
+
+
+    /* ---------- SECCIONES ---------- */
+
+    section{
+        padding:60px 20px;
+    }
+
+
+    /* ---------- PRODUCTOS: CARRUSEL DESLIZABLE ---------- */
+    /* Se desliza al costado con el dedo y cada ficha se
+       engancha sola. Se ve un pedazo de la siguiente para
+       que se entienda que hay mas. */
+
+    .products-grid{
+        display:flex;
+        flex-wrap:nowrap;
+
+        overflow-x:auto;
+        overflow-y:hidden;
+
+        overscroll-behavior-x:contain;
 
         scroll-snap-type:x mandatory;
+        scroll-padding-left:20px;
+
+        gap:12px;
+
+        /* se sale del padding de la seccion para llegar
+           hasta los bordes de la pantalla */
+        margin-inline:-20px;
+        padding-inline:20px;
+
+        padding-bottom:4px;
+
+        -webkit-overflow-scrolling:touch;
+
+        /* barra oculta: en celular se desliza con el dedo */
+        scrollbar-width:none;
     }
 
-    .products-grid .product-card{
-    flex:0 0 52% !important;
-    width:52% !important;
-    min-width:52% !important;
+    .products-grid::-webkit-scrollbar{
+        display:none;
+    }
 
-    padding:12px !important;
+    .product-card{
+        flex:0 0 74%;
 
-    border-radius:16px !important;
+        scroll-snap-align:start;
 
-    scroll-snap-align:start;
+        padding:14px;
+
+        border-radius:18px;
+    }
+
+    /* Sin hover en tactil: el translateY se quedaba pegado
+       despues de tocar la ficha */
+
+    .product-card:hover{
+        transform:none;
+
+        box-shadow:none;
+
+        border-color:#ececec;
+    }
+
+    .product-card:hover .product-image img{
+        transform:none;
+    }
+
+    /* Cuadrada en celular: con 4:5 la ficha quedaba muy alta */
+
+    .product-image{
+        aspect-ratio:1 / 1;
+
+        margin-bottom:12px;
+
+        border-radius:12px;
+    }
+
+    .product-badge{
+        top:22px;
+        left:22px;
+
+        padding:5px 9px;
+
+        font-size:9px;
+    }
+
+    .favorite-btn{
+        top:22px;
+        right:22px;
+
+        width:34px;
+        height:34px;
+
+        font-size:18px;
+        line-height:34px;
+    }
+
+    .product-card h3{
+        font-size:.95rem;
+
+        margin-bottom:4px;
+    }
+
+    .product-card .price{
+        font-size:1.05rem;
+
+        margin-bottom:12px;
+    }
+
+    .product-options{
+        gap:8px;
+
+        margin-bottom:12px;
+    }
+
+    .product-option label{
+        font-size:.65rem;
+    }
+
+    .product-card select,
+    .product-card input{
+        padding:9px 10px;
+
+        /* 16px evita que iOS haga zoom al enfocar */
+        font-size:16px;
+    }
+
+    .product-card select{
+        padding-right:28px;
+    }
+
+    .product-card .add-cart{
+        padding:12px 10px;
+
+        font-size:.8rem;
+    }
+
+    /* En celular se entra al detalle tocando la foto,
+       asi la ficha no arrastra un boton de mas */
+
+    .product-card .view-product{
+        display:none;
+    }
+
+
+    /* ---------- BUSCADOR ---------- */
+
+    .store-controls{
+        flex-direction:column;
+
+        gap:12px;
+
+        margin:30px 0;
+    }
+
+    .store-controls input,
+    .store-controls select{
+        /* en columna, el flex-basis de 300px se aplicaba al ALTO
+           y estiraba el buscador */
+        flex:0 0 auto;
+
+        width:100%;
+
+        font-size:16px;
+    }
+
+
+    /* ---------- OTRAS GRILLAS ---------- */
+
+    .clients-grid,
+    .lookbook-grid{
+        grid-template-columns:1fr;
+
+        gap:20px;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    .footer-container{
+        grid-template-columns:1fr;
+
+        gap:32px;
+
+        text-align:center;
+    }
+
+
+    /* ---------- MODALES ---------- */
+
+    .modal,
+    .size-guide-modal{
+        padding:12px;
+
+        align-items:flex-start;
+    }
+
+    .modal-content{
+        padding:22px 18px;
+
+        margin-top:12px;
+
+        max-height:92dvh;
+    }
+
+    .size-guide-content{
+        padding:24px 18px;
+
+        max-height:92dvh;
+
+        overflow-y:auto;
+    }
+
+
+    /* ---------- FORMULARIOS ---------- */
+    /* 16px en los campos: evita que iOS haga zoom al enfocar */
+
+    input,
+    select,
+    textarea{
+        font-size:16px;
+    }
+
+
+    /* ---------- CARRITO ---------- */
+
+    .cart{
+        top:76px;
+
+        max-height:calc(100dvh - 100px);
+
+        padding:0;
+    }
+
+    .cart-header{
+        padding:18px 18px 14px;
+    }
+
+    .cart-items{
+        padding:6px 18px;
+    }
+
+    .cart-footer{
+        padding:14px 18px 18px;
+    }
+
+    .cart-item{
+        grid-template-columns:52px 1fr auto;
+
+        gap:10px;
+    }
+
+    .cart-item-img{
+        width:52px;
+        height:52px;
+    }
+
 }
 
-   .products-grid .product-image{
-    height:120px !important;
-    aspect-ratio:1 / 1 !important;
-    margin-bottom:8px !important;
-    border-radius:10px !important;
+
+/* =========================================================
+   CELULAR CHICO  (<= 400px)
+   ========================================================= */
+
+@media (max-width:360px){
+
+    section{
+        padding:48px 14px;
+    }
+
+    /* El carrusel sigue igual, solo se ensancha la ficha
+       y se ajusta el margen a la seccion mas angosta */
+
+    .products-grid{
+        margin-inline:-14px;
+        padding-inline:14px;
+
+        scroll-padding-left:14px;
+    }
+
+    .product-card{
+        flex:0 0 82%;
+    }
+
+    .hero-logo img{
+        width:215px;
+    }
+
+    .cart{
+        width:94vw;
+
+        padding:18px;
+    }
+
 }
 
-    .products-grid .product-card h3{
-        font-size:0.95rem !important;
 
-        line-height:1.2 !important;
+/* =========================================================
+   ACCESIBILIDAD
+   ========================================================= */
 
-        margin-bottom:6px !important;
+@media (prefers-reduced-motion: reduce){
+
+    html{
+        scroll-behavior:auto;
     }
 
-    .products-grid .price{
-        font-size:0.95rem !important;
-
-        margin-bottom:10px !important;
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
     }
 
-    .products-grid .product-card label{
-        font-size:0.75rem !important;
-
-        margin-top:8px !important;
-        margin-bottom:4px !important;
-    }
-
-    .products-grid .product-card select,
-    .products-grid .product-card input{
-        padding:8px !important;
-
-        font-size:0.8rem !important;
-
-        margin-bottom:6px !important;
-
-        border-radius:8px !important;
-    }
-
-    .products-grid .view-product,
-    .products-grid .add-cart{
-        padding:9px 8px !important;
-
-        font-size:0.75rem !important;
-
-        margin-top:8px !important;
-    }
-
-.products-grid .product-card{
-    height:auto !important;
-    min-height:0 !important;
 }
 
+/* =========================================================
+   AREA TACTIL EN CELULAR
+   Enlaces y botones de menos de 38px son dificiles de tocar.
+   ========================================================= */
+
+@media (max-width:900px){
+
+    /* "VER SERVICIO →" de las tarjetas corporativas */
+
+    .card-link{
+        display:inline-flex;
+        align-items:center;
+
+        min-height:42px;
+
+        padding:8px 0;
+    }
+
+
+    /* Corazon de favoritos */
+
+    .favorite-btn{
+        width:40px;
+        height:40px;
+
+        font-size:19px;
+        line-height:40px;
+    }
+
+
+    /* Enlaces del pie */
+
+    .footer-links a,
+    .footer-nav a,
+    footer nav a,
+    footer li a,
+    .footer-contact a{
+        display:inline-block;
+
+        min-height:42px;
+
+        padding:11px 4px;
+    }
+
+
+    /* "Ver producto" de la ficha */
+
+    .product-card .view-product{
+        min-height:40px;
+
+        padding:11px 12px;
+    }
+
+}
+
+
+/* =========================================================
+   LEGIBILIDAD
+   ========================================================= */
+
+/* 11px en mayusculas con espaciado se leia apretado */
+
+.product-option label{
+    font-size:.75rem;
+}
+
+.product-badge{
+    font-size:11px;
+}
+
+/* =========================================================
+   PAGINAS DE SERVICIO — CELULAR Y TABLET
+   La foto era position:absolute con un padding-right del 45%
+   reservado para ella, y no habia ninguna regla responsive:
+   en celular la imagen se montaba encima del texto.
+   ========================================================= */
+
+@media (max-width:900px){
+
+    .service-page{
+        min-height:0;
+
+        padding:0 0 28px;
+
+        overflow:hidden;
+    }
+
+    /* La foto pasa a ser una portada arriba del texto */
+
+    .service-image{
+        position:static;
+
+        transform:none;
+
+        width:100%;
+        max-width:none;
+
+        height:200px;
+
+        margin-bottom:24px;
+
+        border-radius:20px 20px 0 0;
+    }
+
+    .service-page .eyebrow,
+    .service-page h2,
+    .service-page p,
+    .service-page ul,
+    .service-page .btn{
+        margin-left:24px;
+        margin-right:24px;
+    }
+
+    .service-page ul{
+        padding-left:22px;
+
+        margin-right:24px;
+    }
+
+    .service-page h2{
+        font-size:1.6rem;
+
+        margin-top:12px;
+        margin-bottom:14px;
+    }
+
+    .service-page p{
+        margin-bottom:18px;
+    }
+
+}
+
+
+@media (max-width:700px){
+
+    .service-image{
+        height:170px;
+    }
+
+    .service-page .eyebrow,
+    .service-page h2,
+    .service-page p,
+    .service-page ul,
+    .service-page .btn{
+        margin-left:18px;
+        margin-right:18px;
+    }
+
+    .service-page ul{
+        padding-left:20px;
+    }
+
+}
+
+/* =========================================================
+   CONTRASTE
+   Varios grises sobre blanco no llegaban al minimo de
+   legibilidad (4.5:1). Se oscurecen lo justo para pasar,
+   manteniendo la jerarquia visual.
+   ========================================================= */
+
+/* #888 sobre blanco daba 3.5:1 */
+
+.flex-option small,
+.shipping-group-header span,
+.shipping-info span,
+.product-option label,
+.cart-item-meta{
+    color:#6b6b6b;
+}
+
+/* #999 sobre blanco daba 2.9:1 */
+
+.cart-empty{
+    color:#6f6f6f;
+}
+
+/* #777 quedaba justo por debajo (4.48:1) */
+
+.eyebrow,
+.checkout-product-info span,
+.cart-total-row span,
+.product-card .view-product{
+    color:#6b6b6b;
+}
+
+/* .eyebrow tambien aparece sobre las secciones negras,
+   donde el gris oscuro no se lee */
+
+.clients .eyebrow,
+.corporate-contact .eyebrow{
+    color:#b8b8b8;
+}
+
+.product-card .view-product:hover{
+    color:#111;
+}
+
+
+/* =========================================================
+   BOTON DE WHATSAPP
+   Blanco sobre el verde de marca daba 2:1, practicamente
+   ilegible. Se invierte: texto oscuro sobre el verde, que
+   mantiene el color de WhatsApp y sube a 7:1.
+   ========================================================= */
+
+.btn.whatsapp{
+    color:#06331a;
+
+    font-weight:800;
+}
+
+.btn.whatsapp:hover{
+    color:#06331a;
 }

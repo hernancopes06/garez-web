@@ -1,243 +1,197 @@
 import json
 import os
 
+from http.server import BaseHTTPRequestHandler
+
 import mercadopago
 
 
-def handler(request):
+# =========================================
+# CONSTRUIR LA PREFERENCIA
+# =========================================
+
+def crear_preferencia(data):
     """
-    Crea una preferencia de Mercado Pago para GAREZ.
+    Recibe el JSON del frontend y devuelve
+    (status, cuerpo) para responder.
     """
 
-    # Solo aceptamos POST
-    if request.method != "POST":
-        return {
-            "statusCode": 405,
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            "body": json.dumps({
-                "error": "Método no permitido"
-            })
+    access_token = os.environ.get("MP_ACCESS_TOKEN")
+
+    if not access_token:
+        return 500, {
+            "error": "Falta configurar MP_ACCESS_TOKEN"
         }
 
-    try:
-        # =========================================
-        # ACCESS TOKEN
-        # =========================================
+    if not data:
+        return 400, {
+            "error": "No se recibieron datos"
+        }
 
-        access_token = os.environ.get(
-            "MP_ACCESS_TOKEN"
+    productos = data.get("productos", [])
+    envio = float(data.get("envio", 0))
+
+    if not productos:
+        return 400, {
+            "error": "El carrito está vacío"
+        }
+
+    # =====================================
+    # ITEMS
+    # =====================================
+
+    items = []
+
+    for producto in productos:
+
+        nombre = str(
+            producto.get("nombre", "Producto GAREZ")
         )
 
-        if not access_token:
-            return {
-                "statusCode": 500,
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": json.dumps({
-                    "error": "Falta configurar MP_ACCESS_TOKEN"
-                })
-            }
+        precio = float(producto.get("precio", 0))
+        cantidad = int(producto.get("cantidad", 1))
 
-        # =========================================
-        # RECIBIR DATOS DEL FRONTEND
-        # =========================================
+        talle = producto.get("talle", "")
+        color = producto.get("color", "")
 
-        data = request.get_json()
+        descripcion = ""
 
-        if not data:
-            return {
-                "statusCode": 400,
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": json.dumps({
-                    "error": "No se recibieron datos"
-                })
-            }
+        if talle:
+            descripcion += "Talle: {}".format(talle)
 
-        productos = data.get("productos", [])
-        envio = float(data.get("envio", 0))
+        if color:
 
-        if not productos:
-            return {
-                "statusCode": 400,
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": json.dumps({
-                    "error": "El carrito está vacío"
-                })
-            }
+            if descripcion:
+                descripcion += " | "
 
-        # =========================================
-        # CREAR ITEMS
-        # =========================================
+            descripcion += "Color: {}".format(color)
 
-        items = []
+        items.append({
+            "title": nombre,
+            "description": descripcion,
+            "quantity": cantidad,
+            "unit_price": precio,
+            "currency_id": "ARS"
+        })
 
-        for producto in productos:
+    # =====================================
+    # ENVÍO
+    # =====================================
 
-            nombre = str(
-                producto.get("nombre", "Producto GAREZ")
+    if envio > 0:
+
+        items.append({
+            "title": "Envío GAREZ",
+            "description": "Costo de envío",
+            "quantity": 1,
+            "unit_price": envio,
+            "currency_id": "ARS"
+        })
+
+    # =====================================
+    # COMPRADOR
+    # =====================================
+
+    comprador = data.get("comprador", {})
+    email = comprador.get("email", "")
+
+    # =====================================
+    # PREFERENCIA
+    # =====================================
+
+    sdk = mercadopago.SDK(access_token)
+
+    preference_data = {
+
+        "items": items,
+
+        "payer": {
+            "email": email
+        },
+
+        "back_urls": {
+            "success": "https://www.tiendagarez.com.ar/",
+            "failure": "https://www.tiendagarez.com.ar/",
+            "pending": "https://www.tiendagarez.com.ar/"
+        },
+
+        "auto_return": "approved",
+
+        "external_reference": "GAREZ-PEDIDO",
+
+        "statement_descriptor": "GAREZ"
+    }
+
+    result = sdk.preference().create(preference_data)
+
+    response = result.get("response", {}) or {}
+
+    init_point = response.get("init_point")
+
+    if not init_point:
+
+        return 500, {
+            "error": "Mercado Pago no devolvió el link de pago.",
+            "detalle": response
+        }
+
+    return 200, {
+        "init_point": init_point
+    }
+
+
+# =========================================
+# HANDLER DE VERCEL
+# =========================================
+
+class handler(BaseHTTPRequestHandler):
+
+    def _responder(self, status, cuerpo):
+
+        payload = json.dumps(cuerpo).encode("utf-8")
+
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(payload)))
+        self.end_headers()
+        self.wfile.write(payload)
+
+    def do_POST(self):
+
+        try:
+
+            largo = int(
+                self.headers.get("Content-Length") or 0
             )
 
-            precio = float(
-                producto.get("precio", 0)
-            )
+            crudo = self.rfile.read(largo) if largo else b""
 
-            cantidad = int(
-                producto.get("cantidad", 1)
-            )
+            data = json.loads(crudo) if crudo else {}
 
-            talle = producto.get("talle", "")
-            color = producto.get("color", "")
+        except Exception:
 
-            descripcion = ""
-
-            if talle:
-                descripcion += f"Talle: {talle}"
-
-            if color:
-                if descripcion:
-                    descripcion += " | "
-
-                descripcion += f"Color: {color}"
-
-            items.append({
-                "title": nombre,
-                "description": descripcion,
-                "quantity": cantidad,
-                "unit_price": precio,
-                "currency_id": "ARS"
+            self._responder(400, {
+                "error": "JSON inválido"
             })
 
-        # =========================================
-        # AGREGAR ENVÍO
-        # =========================================
+            return
 
-        if envio > 0:
+        try:
 
-            items.append({
-                "title": "Envío GAREZ",
-                "description": "Costo de envío",
-                "quantity": 1,
-                "unit_price": envio,
-                "currency_id": "ARS"
+            status, cuerpo = crear_preferencia(data)
+
+            self._responder(status, cuerpo)
+
+        except Exception as error:
+
+            print("Error creando preferencia:", error)
+
+            self._responder(500, {
+                "error": "Error interno al crear el pago."
             })
 
-        # =========================================
-        # DATOS DEL COMPRADOR
-        # =========================================
+    def do_GET(self):
 
-        comprador = data.get(
-            "comprador",
-            {}
-        )
-
-        email = comprador.get(
-            "email",
-            ""
-        )
-
-        # =========================================
-        # CREAR PREFERENCIA
-        # =========================================
-
-        sdk = mercadopago.SDK(
-            access_token
-        )
-
-        preference_data = {
-
-            "items": items,
-
-            "payer": {
-                "email": email
-            },
-
-            "back_urls": {
-
-                "success":
-                    "https://www.tiendagarez.com.ar/",
-
-                "failure":
-                    "https://www.tiendagarez.com.ar/",
-
-                "pending":
-                    "https://www.tiendagarez.com.ar/"
-            },
-
-            "auto_return": "approved",
-
-            "external_reference":
-                "GAREZ-PEDIDO",
-
-            "statement_descriptor":
-                "GAREZ"
-        }
-
-        # =========================================
-        # ENVIAR A MERCADO PAGO
-        # =========================================
-
-        result = sdk.preference().create(
-            preference_data
-        )
-
-        response = result.get(
-            "response",
-            {}
-        )
-
-        init_point = response.get(
-            "init_point"
-        )
-
-        if not init_point:
-
-            return {
-                "statusCode": 500,
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": json.dumps({
-                    "error":
-                        "Mercado Pago no devolvió el link de pago.",
-                    "response": response
-                })
-            }
-
-        # =========================================
-        # DEVOLVER LINK AL FRONTEND
-        # =========================================
-
-        return {
-            "statusCode": 200,
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            "body": json.dumps({
-                "init_point": init_point
-            })
-        }
-
-    except Exception as error:
-
-        print(
-            "Error creando preferencia:",
-            error
-        )
-
-        return {
-            "statusCode": 500,
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            "body": json.dumps({
-                "error":
-                    "Error interno al crear el pago."
-            })
-        }
+        self._responder(405, {
+            "error": "Método no permitido"
+        })
