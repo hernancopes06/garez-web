@@ -793,6 +793,18 @@ document.addEventListener("click", (e) => {
 
         }
 
+// HOODIE BUZO OULET FRISA
+else if (
+    nombre ===
+    "Hoodie Buzo Oulet Frisa"
+) {
+
+    imagenes = [
+        "assets/img/hoodie-buzo-oulet-frisa1.jpg",
+        "assets/img/hoodie-buzo-oulet-frisa2.jpg"
+    ];
+
+}
 
         // BERMUDAS BAGGY RIO GLITCH
         else if (
@@ -927,6 +939,9 @@ document.addEventListener("click", (e) => {
 
             "Buzo Canguro Frisado":
                 "Buzo canguro frisado, cómodo y abrigado, ideal para acompañar tus looks.",
+
+"Hoodie Buzo Oulet Frisa":
+    "Aprovechá nuestro OUTLET SEGUNDA SELECCIÓN, donde cada unidad viene surtida por color al azar, ¡una sorpresa que suma variedad a tu guardarropa! Su diseño clásico y cómodo lo convierte en una prenda imprescindible para el día a día.",
 
             "Buzo Canguro Dark Moon Strass":
                 "Buzo canguro de estilo urbano con detalles de strass y diseño Dark Moon.",
