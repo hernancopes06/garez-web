@@ -72,11 +72,14 @@ class handler(BaseHTTPRequestHandler):
 
             print("Error enviando email:", error)
 
+            detalle = str(error)
+
             self.responder(
                 500,
                 {
                     "ok": False,
-                    "error": "No se pudo enviar el email"
+                    "error": "No se pudo enviar el email",
+                    "detalle": detalle
                 }
             )
 
