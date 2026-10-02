@@ -45,10 +45,11 @@ class handler(BaseHTTPRequestHandler):
         request = urllib.request.Request(
             "https://api.resend.com/emails",
             data=payload,
-            headers={
-                "Authorization": "Bearer {}".format(api_key),
-                "Content-Type": "application/json"
-            },
+          headers={
+    "Authorization": "Bearer {}".format(api_key),
+    "Content-Type": "application/json",
+    "User-Agent": "GAREZ-Web/1.0"
+},
             method="POST"
         )
 
@@ -117,3 +118,5 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
 
         self.wfile.write(payload)
+
+        "User-Agent": "GAREZ-Web/1.0"
