@@ -1,6 +1,7 @@
 import json
 import os
 import urllib.request
+import urllib.error
 from http.server import BaseHTTPRequestHandler
 
 
@@ -68,18 +69,32 @@ class handler(BaseHTTPRequestHandler):
                     }
                 )
 
+        except urllib.error.HTTPError as error:
+
+            detalle = error.read().decode("utf-8")
+
+            print("Error Resend:", detalle)
+
+            self.responder(
+                error.code,
+                {
+                    "ok": False,
+                    "error": "Resend rechazó la petición",
+                    "status": error.code,
+                    "detalle": detalle
+                }
+            )
+
         except Exception as error:
 
             print("Error enviando email:", error)
-
-            detalle = str(error)
 
             self.responder(
                 500,
                 {
                     "ok": False,
                     "error": "No se pudo enviar el email",
-                    "detalle": detalle
+                    "detalle": str(error)
                 }
             )
 
@@ -88,14 +103,17 @@ class handler(BaseHTTPRequestHandler):
         payload = json.dumps(cuerpo).encode("utf-8")
 
         self.send_response(status)
+
         self.send_header(
             "Content-Type",
             "application/json"
         )
+
         self.send_header(
             "Content-Length",
             str(len(payload))
         )
+
         self.end_headers()
 
         self.wfile.write(payload)
